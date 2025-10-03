@@ -1,4 +1,4 @@
-# Information Processing Speed Determines Subjective Time Duration: A Quantitative Theory of Prospective Time Perception
+# The Information Clock: How Information Processing Speed Determines Subjective Time Duration
 
 **Author:** A. Lax
 **Affiliation:** Independent Researcher
@@ -6,15 +6,17 @@
 
 ## Abstract
 
-Subjective temporal experience during ongoing events exhibits remarkable malleability, with time seeming to "fly" during complex, engaging activities while "dragging" during monotony. We present The Information Clock (TIC), a quantitative framework proposing that prospective duration judgments emerge from competing compression and dilation processes. The model formalizes this relationship as T_s ≈ T_o · [1 + κ·N'^γ] / [λ(D')^α · Φ'^β], where T_s is subjective duration, T_o is objective duration, D' is normalized information density (compression factor), N' is normalized novelty (dilation factor), and Φ' represents the system's integrative capacity. Sustained high-density information compresses subjective time while transient novelty dilates it, with the final experience determined by their relative strengths. We specify a pre-registered experimental paradigm using Rapid Serial Visual Presentation (RSVP) with systematically varied entropy levels (1.0-7.0 bits/frame), concurrent EEG recording measuring Lempel-Ziv complexity as proxy for Φ', with subset validation using TMS-evoked perturbational complexity index. The model makes specific, falsifiable predictions about the quantitative relationship between information metrics and temporal experience. While this paper focuses on prospective timing, we discuss how the framework must be extended to accommodate the well-documented prospective-retrospective dissociation where information load shows opposite effects on memory-based duration judgments.
+Subjective temporal experience during ongoing events shows marked malleability, with time seeming to "fly" during complex, engaging activities and "drag" during monotony. We present The Information Clock (TIC), a quantitative framework proposing that prospective duration judgments emerge from competing compression and dilation processes. The relationship is formalized as T_s ≈ T_o · [1 + κ·N'^γ] / [λ(D')^α · Φ'^β], where T_s is subjective duration, T_o is objective duration, D' is normalized information density (compression factor), N' is normalized novelty (dilation factor), and Φ' represents the system's integrative capacity. Sustained high-density information compresses subjective time while transient novelty dilates it, with the final experience determined by their relative strengths. We outline a pre-registered RSVP experiment that varies entropy (1.0–7.0 bits/frame), pairs it with EEG-derived Lempel–Ziv complexity as a Φ' proxy, and includes a subset validation using a TMS-evoked perturbational complexity index. The model makes specific, falsifiable predictions about the quantitative relationship between information metrics and temporal experience. While this paper focuses on prospective timing, we discuss how the framework must be extended to accommodate the well-documented prospective-retrospective dissociation where information load shows opposite effects on memory-based duration judgments.
 
 **Keywords:** Time perception, Information theory, Prospective timing, Subjective experience, Consciousness, Integrated information, EEG, Phase-amplitude coupling, Lempel-Ziv complexity
 
 ## 1. Introduction
 
-The human experience of time's passage is not a passive registration of physical duration but an active cognitive construction profoundly influenced by mental content and processing demands. Time demonstrably contracts during periods of intense engagement or informational novelty and expands during monotony or when information input is sparse and predictable (Wittmann, 2013; Eagleman, 2008; Droit-Volet & Meck, 2007). This malleability of subjective time represents one of the most robust yet poorly understood phenomena in cognitive science, with subjective duration varying by up to 40% based on attentional state and stimulus complexity alone (Matthews & Meck, 2016).
+The human experience of time's passage is not a passive registration of physical duration but an active cognitive construction strongly influenced by mental content and processing demands. Time often contracts during periods of intense engagement or informational novelty and expands during monotony or when information input is sparse and predictable (Wittmann, 2013; Eagleman, 2008; Droit-Volet & Meck, 2007). This malleability is well-established yet remains poorly understood in cognitive science, with subjective duration varying by up to 40% based on attentional state and stimulus complexity alone (Matthews & Meck, 2016).
 
-Zheng & Meister (2025) estimate conscious processing throughput at approximately 10 bits per second, though this value remains under active debate with proposed ranges from 5-30 bits/s depending on task and methodology (Neuron, in press). Note: The 10 bits/s bottleneck is actively debated; empirical estimates range from 5-30 bits/s depending on task and methodology. This information processing constraint, despite 10^9 bits/s sensory input, creates a severe bottleneck that may fundamentally shape temporal experience. Quantum gravity models suggest time itself may emerge from information correlations (Moreva et al., 2013), with neural oscillations modulating temporal integration windows: pre-stimulus alpha phase predicts simultaneity judgments (Milton & Pleydell-Pearce, 2016), while alpha frequency inversely correlates with multisensory binding window width (Venskus et al., 2021; Cecere et al., 2015). These findings suggest that information processing constraints and neural dynamics may constitute the mechanistic substrate underlying subjective time distortions.
+As I developed TIC, I kept running into a simple but stubborn mismatch: modern AI systems have no felt sense of time. They schedule, they sequence, but they do not "wait" as we do. Their estimates of reading, explaining, or doing routinely miss the mark of lived duration. That gap matters. If artificial consciousness is ever to emerge, we will need to quantify core features of our own experience first. The subjective sense of time is one of them. This paper takes a step in that direction by proposing a measurable yardstick for human prospective time—against which future machine phenomenology, if it arises, could be compared. But how can we turn the intertwining of information and time into something we can actually measure?
+
+Zheng & Meister (2024) estimate conscious processing throughput at approximately 10 bits per second, though empirical estimates span roughly 5–30 bits/s depending on task and methodology. This information processing constraint, despite 10^9 bits/s sensory input, creates a severe bottleneck that may fundamentally shape temporal experience. Quantum gravity models suggest that time may emerge from information correlations (Moreva et al., 2013). At the neural scale, oscillations appear to modulate temporal integration windows. For example, pre-stimulus alpha phase predicts simultaneity judgments (Milton & Pleydell-Pearce, 2016), and alpha frequency inversely correlates with multisensory binding window width (Venskus et al., 2021; Cecere et al., 2015). These findings suggest that information processing constraints and neural dynamics may constitute the mechanistic substrate underlying subjective time distortions.
 
 Various psychological models have provided crucial insights into aspects of time perception. Internal clock-accumulator mechanisms posit a pacemaker whose pulses are counted to estimate duration (Gibbon, 1977; Treisman, 1963). Attentional gate models propose that attention to time versus non-temporal events modulates pulse accumulation (Zakay & Block, 1995, 1996), with empirical support from dual-task interference showing timing precision degrades under cognitive load (Brown, 1997). More recent approaches emphasize state-dependent neural dynamics (Paton & Buonomano, 2018) and the role of predictive processing in shaping temporal experience (Friston, 2010; Toren et al., 2020), with surprise and prediction errors systematically dilating or contracting perceived duration depending on context (Birngruber et al., 2018).
 
@@ -39,7 +41,7 @@ TIC is founded on three principles linking information processing to prospective
 
    The TIC framework accommodates both effects through a dual-process architecture where D' operates in the denominator (compression) while N' operates in the numerator (dilation), allowing these mechanisms to compete.
 
-2. **Integrative Capacity Principle**: Individual differences in baseline integrative capacity (Φ'_trait) modulate the efficiency of information processing. Individuals with higher trait integrative capacity can process sustained density (D') and transient novelty (N') more efficiently, leading to stronger time compression at equivalent information loads. This is a stable individual difference, not a within-task state fluctuation. This connects to broader frameworks like Integrated Information Theory (Tononi et al., 2016) which treats integrated information as a dispositional system property dependent on architecture rather than momentary state (Tononi, 2004; Oizumi et al., 2014). Perturbational Complexity Index (PCI) demonstrates exceptional test-retest stability suitable for trait measurement: parietal PCI achieves ICC = 0.927 (excellent reliability), motor PCI ICC = 0.857, and premotor PCI ICC = 0.737 across three sessions within one week (Caulfield et al., 2020; N=9). PCI reliably discriminates conscious from unconscious states with threshold PCI ≥ 0.31-0.44 (Casarotto et al., 2016). PCI shows graded sensitivity across consciousness levels: wakefulness (0.44-0.67), REM sleep (0.40-0.50), deep NREM sleep (0.18-0.28), propofol anesthesia (0.13-0.30), and xenon anesthesia (0.12-0.31) (Casarotto et al., 2016; Casali et al., 2013). Notably, ketamine anesthesia maintains high PCI (≥0.44) despite behavioral unresponsiveness, correlating with preserved subjective experiences (Sarasso et al., 2015). Convergent evidence supports treating neural complexity as trait capacity: resting-state complexity predicts working memory performance (r > 0.40, p < 0.001; Zhang et al., 2023), frontal gamma and central theta at baseline predict 76% of working memory variance (Kenney et al., 2016), and Brain State Complexity correlates with fluid intelligence (g_f) and crystallized intelligence (g_c) (Wang et al., 2019).
+2. **Integrative Capacity Principle**: We treat baseline integrative capacity (Φ'_trait) as a stable moderator of processing efficiency. Individuals with higher Φ' can handle sustained density (D') and transient novelty (N') more efficiently, which should yield stronger time compression at equivalent information loads. This is a trait assumption, not a within-task state fluctuation. This connects to broader frameworks like Integrated Information Theory (Tononi et al., 2016), which treats integrated information as a dispositional system property dependent on architecture rather than momentary state (Tononi, 2004; Oizumi et al., 2014). Perturbational Complexity Index (PCI) shows high test-retest stability suitable for trait measurement: parietal PCI achieves ICC = 0.927 (high reliability), motor PCI ICC = 0.857, and premotor PCI ICC = 0.737 across three sessions within one week (Caulfield et al., 2020; N=9). PCI reliably discriminates conscious from unconscious states with threshold PCI ≥ 0.31–0.44 (Casarotto et al., 2016). PCI shows graded sensitivity across consciousness levels: wakefulness (0.44–0.67), REM sleep (0.40–0.50), deep NREM sleep (0.18–0.28), propofol anesthesia (0.13–0.30), and xenon anesthesia (0.12–0.31) (Casarotto et al., 2016; Casali et al., 2013). Notably, ketamine anesthesia maintains high PCI (≥ 0.44) despite behavioral unresponsiveness, correlating with preserved subjective experiences (Sarasso et al., 2015). Convergent evidence supports treating neural complexity as trait capacity: resting-state complexity predicts working memory performance (r > 0.40, p < 0.001; Zhang et al., 2023), frontal gamma and central theta at baseline predict 76% of working memory variance (Kenney et al., 2016), and Brain State Complexity correlates with fluid intelligence (g_f) and crystallized intelligence (g_c) (Wang et al., 2019).
 
 3. **Inverse Relationship Principle**: Higher sustained information processing loads lead to compression of subjective duration—time feels shorter when continuously processing more information. This prospective compression effect is distinct from transient novelty-induced dilation (oddball paradigms) and from retrospective duration judgments which show opposite patterns.
 
@@ -84,11 +86,11 @@ This equation implements a dual-process model where compression and dilation mec
    - When κ·N'^γ < λ(D')^α · Φ'^β: time compresses (T_s < T_o)
    - High D' with high N': effects compete, final T_s depends on relative parameter values
 
-This formulation ensures dimensional consistency and correctly predicts both compression (via D' and Φ') and dilation (via N'), resolving the mathematical inconsistency in earlier formulations where all variables operated in the same direction.
+This formulation maintains dimensional consistency and predicts both compression (via D' and Φ') and dilation (via N'), resolving a prior inconsistency in which all variables pushed in the same direction.
 
 ### 2.3 Scope and Limitations
 
-This formulation specifically addresses prospective timing—duration judgments made during or immediately after an interval with foreknowledge that timing is relevant. We acknowledge that retrospective timing (memory-based judgments without prior timing intention) shows the opposite pattern, with high information load leading to longer duration estimates. This prospective-retrospective dissociation (Block & Zakay, 1997; Block et al., 2010) suggests that different mechanisms govern online temporal experience versus memory-based temporal reconstruction. Prospective timing relies on attention allocated to time itself, while retrospective timing depends on the contextual changes stored in memory (Zakay, 2014; Matthews & Meck, 2014). Future work must extend TIC to incorporate dual-process architecture; here we establish the quantitative framework for the prospective component.
+This formulation deliberately targets prospective timing—duration judgments made during or immediately after an interval with foreknowledge that timing is relevant. We acknowledge that retrospective timing (memory-based judgments without prior timing intention) shows the opposite pattern, with high information load leading to longer duration estimates. This prospective–retrospective dissociation (Block & Zakay, 1997; Block et al., 2010) suggests that different mechanisms govern online temporal experience versus memory-based temporal reconstruction. Prospective timing relies on attention allocated to time itself, while retrospective timing depends on the contextual changes stored in memory (Zakay, 2014; Matthews & Meck, 2014). Future work must extend TIC to incorporate dual-process architecture; here we establish the quantitative framework for the prospective component.
 
 ### 2.4 Prospective and Retrospective Dissociations
 
@@ -109,21 +111,23 @@ This "high-resolution narrowing" hypothesis could reconcile reports of subjectiv
 
 Further research directly measuring prospective timing during controlled arousal states (e.g., using real-time duration production tasks) is needed to test this hypothesis.
 
+If prospective and retrospective estimates can diverge so sharply, what exactly are we measuring when we say that “time felt longer”? The experience in the moment, or the memory of its structure?
+
 ### 2.5 Empirical Precedents for TIC
 
 The TIC framework integrates findings from multiple converging research streams:
 
-**Information Bottleneck:** Zheng & Meister (2025) estimate conscious processing throughput at approximately 10 bits per second across diverse tasks (reading, problem-solving, gaming), though empirical estimates range from 5-30 bits/s depending on task and methodology. Despite 10^9 bits/s sensory input, this bottleneck necessitates compression mechanisms that may distort temporal perception.
+**Information Bottleneck:** Zheng & Meister (2024) estimate conscious processing throughput at approximately 10 bits per second across diverse tasks (reading, problem-solving, gaming), though empirical estimates range from 5-30 bits/s depending on task and methodology. Despite 10^9 bits/s sensory input, this bottleneck necessitates compression mechanisms that may distort temporal perception.
 
-**Phase-Dependent Timing:** Pre-stimulus alpha oscillation phase modulates simultaneity judgments (Milton & Pleydell-Pearce, 2016), with certain phases producing approximately 100-200ms integration windows. Individual alpha frequency inversely correlates with multisensory binding window width (Venskus et al., 2021), supporting oscillatory gating of temporal integration. These findings align with theoretical models suggesting that neural oscillations provide temporal reference frames for perceptual binding (VanRullen & Koch, 2003; Fries, 2015), with slower oscillations corresponding to wider temporal windows of integration (Cecere et al., 2015). Multisensory studies demonstrate remarkable precision: humans can detect audiovisual asynchronies of approximately 20ms (Hirsh & Sherrick, 1961), with audio-tactile simultaneity requiring approximately 52ms audio lead and visual-tactile requiring approximately 73ms visual lead (Noel et al., 2015).
+**Phase-Dependent Timing:** Pre-stimulus alpha oscillation phase modulates simultaneity judgments (Milton & Pleydell-Pearce, 2016), with certain phases producing approximately 100–200 ms integration windows. Individual alpha frequency inversely correlates with multisensory binding window width (Venskus et al., 2021), supporting oscillatory gating of temporal integration. These findings align with theoretical models suggesting that neural oscillations provide temporal reference frames for perceptual binding (VanRullen & Koch, 2003; Fries, 2015), with slower oscillations corresponding to wider temporal windows of integration (Cecere et al., 2015). Multisensory studies demonstrate high precision: humans can detect audiovisual asynchronies of approximately 20 ms (Hirsh & Sherrick, 1961), with audio–tactile simultaneity requiring approximately 52 ms audio lead and visual–tactile requiring approximately 73 ms visual lead (Noel et al., 2015).
 
 **Information Content Effects:** Trial-by-trial duration biases during video viewing are reconstructed from salient changes in sensory cortex (Sherman et al., 2022), demonstrating that transient novelty and salience (N') can modulate perceived duration through attentional capture. High-surprise (unexpected) events feel longer than predicted events, with effect size modulated by attention and context (Birngruber et al., 2018). Critically, these effects depend on whether stimuli are task-relevant: attended novel events dilate perceived duration (Tse et al., 2004), while unattended novelty may have minimal effects (New & Scholl, 2009). Information-theoretic models using Bayesian surprise (KL divergence between prior and posterior beliefs) accurately predict magnitude of temporal distortions (Lieder et al., 2013).
 
-**Φ' Validation:** Perturbational Complexity Index (PCI) reliably discriminates consciousness levels with threshold approximately 0.31-0.44 (Casarotto et al., 2016). PCI shows excellent test-retest reliability (ICC > 0.85) (Caulfield et al., 2020) and correlates with timing accuracy across states. Ketamine dissociation demonstrates high PCI despite behavioral unresponsiveness (Sarasso et al., 2015), suggesting Φ' captures phenomenological richness independent of reportability.
+**Φ' Validation:** Perturbational Complexity Index (PCI) reliably discriminates consciousness levels with threshold approximately 0.31–0.44 (Casarotto et al., 2016). PCI shows high test-retest reliability (ICC > 0.85) (Caulfield et al., 2020) and correlates with timing accuracy across states. Ketamine dissociation demonstrates high PCI despite behavioral unresponsiveness (Sarasso et al., 2015), suggesting Φ' captures phenomenological richness independent of reportability.
 
 **State Modulation:** Across states, PCI values show consistent patterns: wakefulness (0.44-0.67), REM sleep (0.40-0.50), deep NREM sleep (0.18-0.28), propofol anesthesia (0.13-0.30), and xenon anesthesia (0.12-0.31) (Casarotto et al., 2016; Casali et al., 2013). Interventions affecting Φ' show predicted timing effects: transcranial magnetic stimulation (TMS) at 10Hz to right supramarginal gyrus causes subjective temporal lengthening (Wiener et al., 2010), while low-frequency (1Hz) TMS to superior parietal cortex improves reproduction accuracy for longer intervals by subtly normalizing an overly fast internal clock (Rocha et al., 2018). Prefrontal transcranial direct current stimulation (tDCS) significantly improves time estimation and discrimination in children with ADHD, with anodal stimulation to ventromedial PFC showing greatest effects on long-duration reproduction (Nejati et al., 2024).
 
-**Psychedelic and Altered States:** Psilocybin selectively impairs timing for intervals >2-3 seconds, with inability to reproduce longer durations and slowed preferred tapping rate, co-occurring with working memory deficits and strong subjective time distortion reports (Wittmann et al., 2007). Critically, TMS-EEG studies show psilocybin maintains high PCI (no reduction in perturbational complexity) while dramatically increasing spontaneous EEG signal diversity (Ort et al., 2023), indicating unchanged integrative capacity despite profoundly altered phenomenal content. Similarly, ketamine at sub-anesthetic doses shows no significant PCI change while all measures of spontaneous EEG complexity increase, correlating with subjective intensity of altered consciousness (Farnes et al., 2020). These findings suggest Φ' reflects a stable conscious capacity while information content and temporal processing can vary independently. Conversely, sensory isolation (Ganzfeld) produces dramatic timing distortions: immersive monotonic environments lengthen produced durations significantly, with some participants reporting complete "disappearance" of time and showing breakdown of linear timing functions (Glicksohn et al., 2017).
+**Psychedelic and Altered States:** Psilocybin selectively impairs timing for intervals > 2–3 seconds, with inability to reproduce longer durations and slowed preferred tapping rate, co-occurring with working memory deficits and strong subjective time distortion reports (Wittmann et al., 2007). Critically, TMS-EEG studies show psilocybin maintains high PCI (no reduction in perturbational complexity) while substantially increasing spontaneous EEG signal diversity (Ort et al., 2023), indicating unchanged integrative capacity despite markedly altered phenomenal content. Similarly, ketamine at sub-anesthetic doses shows no significant PCI change while all measures of spontaneous EEG complexity increase, correlating with subjective intensity of altered consciousness (Farnes et al., 2020). These findings suggest Φ' reflects a stable conscious capacity while information content and temporal processing can vary independently. Conversely, sensory isolation (Ganzfeld) produces marked timing distortions: immersive monotonic environments lengthen produced durations significantly, with some participants reporting complete "disappearance" of time and showing breakdown of linear timing functions (Glicksohn et al., 2017).
 
 These converging lines support TIC's core claim that information processing load and integrative capacity quantitatively determine prospective temporal experience.
 
@@ -159,13 +163,13 @@ Note: Φ' is a proxy measure derived from PCI-inspired EEG complexity metrics, n
 
 **Trait vs. State Distinction:**
 
-We measure Φ' as a baseline trait using pre-task resting-state EEG, not as a task-concurrent state variable. This approach:
+We deliberately measure Φ' as a baseline trait using pre-task resting-state EEG rather than as a task-concurrent state variable. This choice:
 
 1. **Avoids circularity:** Task performance cannot influence the Φ' measure
-2. **Captures stable capacity:** Individual differences in maximal integrative potential
-3. **Limits scope:** Cannot account for state-dependent changes (fatigue, arousal, pharmacology) that may affect time perception through Φ' modulation
+2. **Targets stable capacity:** Individual differences in maximal integrative potential
+3. **Constrains scope:** State-dependent changes (fatigue, arousal, pharmacology) are acknowledged but remain outside the present model
 
-This is a deliberate theoretical choice prioritizing methodological rigor over comprehensiveness. Future extensions could incorporate state-dependent Φ' measures once the trait-based foundation is validated.
+This is a deliberate theoretical choice. We prioritize methodological clarity now, anticipating state-dependent Φ' extensions once the trait-based foundation is validated.
 
 **Neural Proxies**:
 
@@ -177,14 +181,14 @@ This is a deliberate theoretical choice prioritizing methodological rigor over c
 
 **Validation Evidence:**
 
-PCI shows near-perfect discrimination between conscious and unconscious states (Casarotto et al., 2016):
+PCI shows strong discrimination between conscious and unconscious states (Casarotto et al., 2016):
 - Wakefulness: PCI = 0.44-0.67
 - REM sleep: PCI = 0.40-0.50 (conscious but disconnected)
 - Deep NREM: PCI = 0.18-0.28 (unconscious)
 - Propofol anesthesia: PCI = 0.12-0.31 (unconscious)
 - Ketamine anesthesia: PCI ≥ 0.44 (dissociated consciousness) (Sarasso et al., 2015)
 
-Test-retest reliability is excellent (ICC = 0.857-0.927 for motor and parietal targets) (Caulfield et al., 2020), validating PCI as stable trait measure of Φ'_max. Long-term meditation (>60,000 hours) shows nuanced Φ' modulation with enhanced beta/gamma oscillations during "open presence" states, though overall PCI remains in the conscious range (Bodart et al., 2018).
+Test-retest reliability is high (ICC = 0.857–0.927 for motor and parietal targets) (Caulfield et al., 2020), validating PCI as a stable trait measure of Φ'_max. Long-term meditation (> 60,000 hours) shows nuanced Φ' modulation with enhanced beta/gamma oscillations during "open presence" states, though overall PCI remains in the conscious range (Bodart et al., 2018).
 
 **Normalization**: All proxies are z-scored within participants relative to baseline for use as Φ' in Equation 1.
 
@@ -219,7 +223,7 @@ N = 30-40 healthy adults (age 18-40), with normal or corrected-to-normal vision,
 - Tests whether effects are information-specific or general attention/vigilance
 
 **Duration Production Task**:
-Participants view 90-second stimulus blocks and press a key when they believe 60 seconds have elapsed. The produced duration (T_s) is the primary dependent variable.
+Participants view 90-second blocks and press a key when they believe 60 seconds have elapsed. The produced duration (T_s) is the primary dependent variable.
 
 ### 4.4 EEG Recording and Analysis
 
@@ -351,7 +355,7 @@ Following validated timing model precedents: 80-180 trials minimum for 4-6 param
 
 **Mechanism**: Higher D' increases the denominator λ(D')^α · Φ'^β, decreasing T_s/T_o.
 
-**Operational prediction**: Duration reproduction for high-density RSVP sequences (Block A: 7.0 bits/frame) will show significant underestimation relative to low-density sequences (1.0 bits/frame). Expected effect size: d ≈ 0.5-0.6 (medium), based on 15+ years of convergent evidence from independent laboratories (Tse et al., 2004; Pariyadath & Eagleman, 2007, 2012; Matthews & Meck, 2016).
+**Operational prediction**: Duration reproduction for high-density RSVP sequences (Block A: 7.0 bits/frame) will show significant underestimation relative to low-density sequences (1.0 bits/frame). We expect a medium effect (d ≈ 0.5–0.6), consistent with 15+ years of evidence from independent laboratories (Tse et al., 2004; Pariyadath & Eagleman, 2007, 2012; Matthews & Meck, 2016).
 
 **Confirmatory Status**: Parameter recovery simulation (Appendix A) demonstrates good identifiability for density parameters (α: r = 0.799, λ: r = 0.796), supporting confirmatory testing of TIC's novel information-compression mechanism.
 
@@ -361,9 +365,9 @@ Following validated timing model precedents: 80-180 trials minimum for 4-6 param
 
 **Mechanism**: Higher N' increases the numerator (1 + κ·N'^γ), increasing T_s/T_o. This predicts the classic oddball effect.
 
-**Operational prediction**: Duration judgments for unexpected stimuli within Block B sequences will show overestimation relative to predictable stimuli. Expected effect size: d ≈ 0.5-0.6 (medium), based on robust meta-analytic patterns showing oddball effects with Relative Duration Distortion (RDD) of 5.8-9.3% (Ciria et al., 2019; N=23-26 per condition, t-values 2.27-3.70, p < 0.01).
+**Operational prediction**: Duration judgments for unexpected stimuli within Block B sequences will show overestimation relative to predictable stimuli. We expect a medium effect (d ≈ 0.5–0.6), consistent with meta-analytic evidence showing oddball effects with Relative Duration Distortion (RDD) of 5.8–9.3% (Ciria et al., 2019; N = 23–26 per condition, t-values 2.27–3.70, p < 0.01).
 
-**Exploratory Status**: Parameter recovery shows moderate identifiability for novelty parameters (κ: r = 0.516, γ: r = 0.481), limiting precision of dilation effect quantification. However, the oddball effect itself is well-established across 15+ years of independent research, making the directional prediction robust even if parameter estimates have lower precision.
+**Exploratory Status**: Parameter recovery shows moderate identifiability for novelty parameters (κ: r = 0.516, γ: r = 0.481), limiting precision of dilation effect quantification. However, the oddball effect itself is well-established across 15+ years of independent research, making the directional prediction well supported even if parameter estimates have lower precision.
 
 *Precedent*: Oddball paradigms consistently show novelty extends perceived duration (Tse et al., 2004; Pariyadath & Eagleman, 2012; Matthews & Meck, 2016), with effects modulated by repetition number (F(1,18) = 56.9, partial η² ≈ 0.76) and angular discrepancy between standard and oddball stimuli.
 
@@ -392,7 +396,7 @@ Following validated timing model precedents: 80-180 trials minimum for 4-6 param
 - Interaction: N' effect stronger when D' is low; D' effect stronger when N' is low
 - Mixed conditions (high D', high N') show intermediate values
 
-Expected interaction effect size: η² ≈ 0.05-0.10 (small to medium), as competing compression and dilation forces may partially cancel, yielding more subtle interaction patterns than main effects. This estimate derives from Pariyadath & Eagleman (2012) showing interaction F(1,66) = 4.2, corresponding to partial η² ≈ 0.06, precisely matching predictions when orthogonal factors compete.
+Expected interaction effect size: η² ≈ 0.05–0.10 (small to medium), as competing compression and dilation forces may partially cancel, yielding more subtle interaction patterns than main effects. This estimate derives from Pariyadath & Eagleman (2012) showing interaction F(1,66) = 4.2, corresponding to partial η² ≈ 0.06, consistent with predictions when orthogonal factors compete.
 
 **Rationale**: These conservative estimates reflect 15+ years of convergent empirical findings and account for potential attenuation when D' and N' are rigorously orthogonalized following validated precedents (Jiang et al., 2016: r ≈ 0 between color and motion expectation via factorial design; Ciria et al., 2019: orthogonal manipulation of expectation and novelty). We prefer to underestimate than overestimate effects, ensuring adequate power even if true effects are smaller than predicted by theory.
 
@@ -421,7 +425,7 @@ TIC would be falsified if:
 
 ### 6.1 Theoretical Contributions
 
-TIC provides the first quantitative, information-theoretic model of prospective time perception with a mathematically rigorous dual-process architecture. By formalizing the relationship between measurable information properties (density, novelty) and subjective duration, it moves beyond descriptive accounts to testable mathematical predictions. The inclusion of the integrated information term (Φ') connects time perception to broader theories of consciousness, suggesting that temporal experience reflects fundamental aspects of information integration in conscious systems.
+TIC offers a quantitative, information-theoretic model of prospective time perception with an explicit, testable dual-process architecture. By formalizing the relationship between measurable information properties (density, novelty) and subjective duration, it moves beyond descriptive accounts to testable mathematical predictions. To our knowledge, no prior account ties density, novelty, and integrative capacity into a single quantitative expression. The inclusion of the integrated information term (Φ') connects time perception to broader theories of consciousness, suggesting that temporal experience reflects fundamental aspects of information integration in conscious systems.
 
 ### 6.2 Model Architecture: Dual-Process Framework
 
@@ -431,7 +435,7 @@ The TIC equation has been specifically formulated to capture both compression an
 
 **Dilation Process (Numerator)**: Transient novelty/salience (N') operates in the numerator, increasing T_s/T_o when increased. This reflects attentional capture and enhanced encoding during surprising events, consistent with the oddball effect literature (Tse et al., 2004; Birngruber et al., 2018). Prediction errors drive enhanced temporal encoding, making unexpected moments feel longer.
 
-**Why Separate Processes Are Necessary**: Earlier formulations that placed both D' and N' in a multiplicative term within the denominator (e.g., (D'·N')^α) were mathematically incapable of producing opposing effects. Since all variables in a denominator must push the outcome in the same direction (increasing denominator → decreasing ratio), such formulations could not simultaneously predict compression from sustained density and dilation from transient novelty. The current formulation resolves this by placing D' and N' in different parts of the equation, allowing them to compete.
+**Why Separate Processes Are Necessary**: If both D' and N' appear only in the denominator, every increase pushes T_s/T_o downward. That formulation cannot generate dilation. Separating D' (denominator) from N' (numerator) permits the observed opposition.
 
 **Empirical Implications**: The dual-process structure predicts that:
 1. Pure sustained density (high D', low N') → strong compression
@@ -443,11 +447,9 @@ This framework maintains all core theoretical insights while ensuring mathematic
 
 ### 6.3 Relationship to Existing Models
 
-TIC can be viewed as a formalization and extension of attentional gate models (Zakay & Block, 1995, 1996), which propose that attention to time versus non-temporal events modulates pulse accumulation but lack quantitative specification of information metrics. The denominator in Equation 1 functions analogously to an inverse gate: higher information load effectively "closes" the gate to temporal pulse accumulation. However, TIC specifies the precise information-theoretic quantities that determine gate status and predicts specific quantitative relationships rather than merely directional effects.
+TIC formalizes and extends attentional gate models (Zakay & Block, 1995, 1996) by specifying information-theoretic quantities and yielding quantitative predictions. The denominator in Equation 1 functions analogously to an inverse gate: higher information load effectively "closes" the gate to temporal pulse accumulation. Predictive coding frameworks (Friston, 2010; Toren et al., 2020) emphasize prediction errors in temporal distortions, closely related to our N' term. State-dependent dynamics models (Paton & Buonomano, 2018) highlight neural trajectory complexity but do not formalize information-theoretic relationships.
 
-Predictive coding frameworks (Friston, 2010; Toren et al., 2020) emphasize prediction errors in temporal distortions, closely related to our N' term. State-dependent dynamics models (Paton & Buonomano, 2018) highlight neural trajectory complexity but don't formalize information-theoretic relationships.
-
-The Φ' component directly connects to Integrated Information Theory (IIT) (Tononi et al., 2016), which proposes integrated information as the substrate of consciousness. TIC extends IIT by linking Φ' to temporal phenomenology, predicting that consciousness state (reflected in Φ') fundamentally shapes temporal experience.
+The Φ' term links temporal experience to Integrated Information Theory (IIT) (Tononi et al., 2016) without equating our empirical proxy Φ' with IIT’s φ. In this sense, TIC connects integrative capacity to temporal phenomenology while keeping the proxy status explicit.
 
 ### 6.4 The Prospective-Retrospective Challenge
 
@@ -510,7 +512,9 @@ Beyond extending to retrospective timing, future research should:
 
 ## 7. Conclusion
 
-The Information Clock (TIC) offers a quantitative framework linking information processing to prospective temporal experience through a dual-process architecture. By proposing that subjective duration emerges from competing compression and dilation mechanisms—formalized as T_s ≈ T_o · [1 + κ·N'^γ] / [λ(D')^α · Φ'^β]—TIC makes specific, testable predictions about how we experience time's passage. The model correctly predicts that sustained information density compresses time while transient novelty dilates it, with integrative capacity modulating both effects. While acknowledging the need for extension to retrospective timing, this framework provides a mathematically rigorous foundation for understanding one of consciousness's most fundamental features: the subjective flow of time.
+The Information Clock (TIC) offers a quantitative framework linking information processing to prospective temporal experience through a dual-process architecture. By proposing that subjective duration emerges from competing compression and dilation mechanisms—formalized as T_s ≈ T_o · [1 + κ·N'^γ] / [λ(D')^α · Φ'^β]—TIC makes specific, testable predictions about how we experience time's passage. The model predicts that sustained information density compresses time while transient novelty dilates it, with integrative capacity modulating both effects. While acknowledging the need for extension to retrospective timing, this framework provides a foundation for understanding one of consciousness's most fundamental features: the subjective flow of time.
+
+Beyond time perception, TIC may help clarify how temporal experience could appear—or fail to appear—in artificial systems. By providing a falsifiable, quantitative account of subjective duration, TIC offers a baseline against which future machine "temporal signatures" might be assessed. If an artificial agent ever exhibits a consistent, emergent mismatch between objective and subjective time under controlled manipulations of information density and novelty, we would at least have a ruler to hold up. The broader question is simple: if consciousness comes with a way of "waiting," what would time feel like for a system that processes information differently than we do?
 
 ## References
 
@@ -630,7 +634,7 @@ Zakay, D., & Block, R. A. (1996). The role of attention in time estimation proce
 
 Zakay, D., & Block, R. A. (1997). Temporal cognition. *Current Directions in Psychological Science*, *6*(1), 12-16.
 
-Zheng, Y., & Meister, M. (2025). The unbearable slowness of being: Why do we live at 10 bits/s? *Neuron*, in press.
+Zheng, J., & Meister, M. (2024). Perspective The unbearable slowness of being: Why do we live at 10 bits/s? *Neuron*, *112*(22), 3799-3808. https://doi.org/10.1016/j.neuron.2024.11.008
 
 ---
 
@@ -697,7 +701,7 @@ Parameter recovery simulations (N = 1000 iterations) revealed differential ident
 
 ### A.4 Interpretation and Design Implications
 
-**Asymmetric Recovery Reflects Design Priorities**: The differential identifiability directly reflects experimental resource allocation. Block A (density manipulation) provides 40 trials across 5 levels (8 observations per level), enabling robust estimation of compression parameters {λ, α, β}. Block B (novelty manipulation) provides only 16 trials across 2 levels (8 observations per level), constraining dilation parameter {κ, γ} precision.
+**Asymmetric Recovery Reflects Design Priorities**: The differential identifiability directly reflects experimental resource allocation. Block A (density manipulation) provides 40 trials across 5 levels (8 observations per level), enabling more reliable estimation of compression parameters {λ, α, β}. Block B (novelty manipulation) provides only 16 trials across 2 levels (8 observations per level), constraining dilation parameter {κ, γ} precision.
 
 **Theoretical Significance**: This asymmetry validates TIC's design priorities. Compression parameters (r ≈ 0.80) represent the **novel theoretical contribution**—the information-density mechanism linking sustained information load to temporal compression. These parameters are well-identified. Dilation parameters (r ≈ 0.50) reproduce the **established oddball effect** already validated across 15+ years of independent research (Tse et al., 2004; Pariyadath & Eagleman, 2012; Matthews & Meck, 2016). Lower precision here is acceptable given the effect is not theoretically novel.
 

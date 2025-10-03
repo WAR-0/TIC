@@ -10,6 +10,7 @@ Author: TIC Research
 Date: 2025-10-02
 """
 
+import os
 import numpy as np
 from typing import Tuple, Dict, List
 
@@ -344,51 +345,62 @@ class TICParameterRecovery:
         return stats
 
     def generate_manuscript_text(self, stats):
-        """Generate text for manuscript"""
+        """Generate text for manuscript (Appendix A) with accurate interpretation."""
         text = "\n" + "=" * 80 + "\n"
-        text += "MANUSCRIPT TEXT FOR APPENDIX A (Line 203):\n"
+        text += "MANUSCRIPT TEXT FOR APPENDIX A\n"
         text += "=" * 80 + "\n\n"
 
         text += "**A.3. Simulation Results:**\n\n"
-        text += f"Parameter recovery simulations (N = {self.n_simulations} iterations) demonstrated robust "
-        text += f"recoverability of all five TIC parameters given the proposed experimental design "
-        text += f"(N = {self.n_participants} participants, {self.n_trials} trials). The three-phase sequential "
-        text += "estimation strategy achieved strong recovery correlations: "
+        text += (
+            f"Parameter recovery simulations (N = {self.n_simulations} iterations) revealed differential "
+            f"identifiability across TIC parameters given the proposed experimental design "
+            f"(N = {self.n_participants} participants, {self.n_trials} trials per participant). "
+            "A three-phase sequential estimation strategy was used. Recovery correlations were: "
+        )
 
-        # Recovery correlations
-        r_vals = [f"{param} r = {stats[param]['r']:.3f}" for param in ['lambda', 'kappa', 'alpha', 'beta', 'gamma']]
+        # Recovery correlations (ordered for readability)
+        ordered_params = ['lambda', 'alpha', 'beta', 'kappa', 'gamma']
+        r_vals = [f"{p} r = {stats[p]['r']:.3f}" for p in ordered_params]
         text += ", ".join(r_vals[:-1]) + f", and {r_vals[-1]}. "
 
         # Bias
-        text += "Parameter bias was minimal: "
-        bias_vals = [f"{param} = {stats[param]['rel_bias_pct']:.1f}%" for param in stats.keys()]
-        text += ", ".join(bias_vals[:-1]) + f", and {bias_vals[-1]} of respective parameter ranges. "
+        text += "Parameter bias (as % of range): "
+        bias_vals = [f"{p} = {stats[p]['rel_bias_pct']:.1f}%" for p in ordered_params]
+        text += ", ".join(bias_vals[:-1]) + f", and {bias_vals[-1]}. "
 
-        # Mean correlation
-        mean_r = np.mean([stats[p]['r'] for p in stats.keys()])
-        min_r = np.min([stats[p]['r'] for p in stats.keys()])
+        # Mean/min correlation and categorization
+        mean_r = float(np.mean([stats[p]['r'] for p in stats.keys()]))
+        min_r = float(np.min([stats[p]['r'] for p in stats.keys()]))
+        good_threshold = 0.80
+        good_params = [p for p in stats if stats[p]['r'] >= good_threshold]
+        moderate_params = [p for p in stats if stats[p]['r'] < good_threshold]
 
-        text += f"Mean recovery correlation across all parameters was r = {mean_r:.3f} "
-        text += f"(minimum r = {min_r:.3f}), exceeding the target threshold of r > 0.80 for 'good' recovery "
-        text += "(Luzardo et al., 2013). "
+        text += (
+            f"Mean recovery correlation across parameters was r = {mean_r:.3f} "
+            f"(minimum r = {min_r:.3f}). Parameters meeting the r ≥ {good_threshold:.2f} 'good' threshold "
+            f"(Luzardo et al., 2013) were: {', '.join(good_params) if good_params else 'none'}. "
+            f"Other parameters showed moderate recovery: {', '.join(moderate_params) if moderate_params else 'none'}. "
+        )
 
         # RMSE
-        text += "Root mean square errors were acceptable: "
-        rmse_vals = [f"{param} = {stats[param]['rmse']:.3f}" for param in stats.keys()]
+        text += "RMSE values: "
+        rmse_vals = [f"{p} = {stats[p]['rmse']:.3f}" for p in ordered_params]
         text += ", ".join(rmse_vals[:-1]) + f", and {rmse_vals[-1]}. "
 
-        text += "These results confirm the proposed experimental design provides sufficient statistical power "
-        text += "to reliably estimate all five TIC parameters, validating the model's identifiability and "
-        text += "supporting the feasibility of empirical parameter estimation.\n\n"
+        text += (
+            "These results suggest the proposed design identifies compression parameters well while providing "
+            "moderate information for novelty-related parameters, aligning with a confirmatory framing for "
+            "compression and an exploratory framing for novelty.\n\n"
+        )
 
         # Table
         text += "**Table A1: Parameter Recovery Statistics**\n\n"
         text += "| Parameter | Recovery r | Bias    | Rel.Bias% | RMSE   | MAE    |\n"
         text += "|-----------|-----------|---------|-----------|--------|--------|\n"
 
-        for param in stats.keys():
-            s = stats[param]
-            text += f"| {param:<9} | {s['r']:>9.3f} | {s['bias']:>7.3f} | {s['rel_bias_pct']:>9.1f} | "
+        for p in ordered_params:
+            s = stats[p]
+            text += f"| {p:<9} | {s['r']:>9.3f} | {s['bias']:>7.3f} | {s['rel_bias_pct']:>9.1f} | "
             text += f"{s['rmse']:>6.3f} | {s['mae']:>6.3f} |\n"
 
         text += "\n*Recovery r = correlation between true and estimated parameters; "
@@ -417,8 +429,9 @@ def main():
     manuscript_text = simulator.generate_manuscript_text(stats)
     print(manuscript_text)
 
-    # Save to file
-    output_file = '/Users/grey/War/research/irtp/analysis/parameter_recovery_results.txt'
+    # Save to repository simulations directory
+    sim_dir = os.path.dirname(os.path.abspath(__file__))
+    output_file = os.path.join(sim_dir, 'results.txt')
     with open(output_file, 'w') as f:
         f.write(manuscript_text)
 

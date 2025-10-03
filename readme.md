@@ -22,11 +22,11 @@ Where:
 ## Key Findings
 
 Parameter recovery validation (N=35, 1960 observations):
-- **Compression parameters** (novel contribution): r > 0.79, validating information-density mechanism
-- **Dilation parameters** (known effects): r ≈ 0.50, confirming established oddball phenomena
+- **Compression parameters** (novel contribution): r > 0.79, supporting the information-density mechanism
+- **Dilation parameters** (known effects): r ≈ 0.50, consistent with established oddball phenomena
 - Mean recovery: r = 0.677 across all parameters
 
-The asymmetric recovery validates TIC's core innovation—the compression mechanism—while acknowledging that transient novelty effects require expanded experimental trials.
+The asymmetric recovery supports TIC's core innovation—the compression mechanism—while acknowledging that transient novelty effects require expanded experimental trials.
 
 ## Repository Structure
 
@@ -60,9 +60,13 @@ TIC/
 - **Neural markers**: Lempel-Ziv complexity (LZc) as Φ' proxy, validated against Perturbational Complexity Index (PCI)
 - **Task**: Duration production (estimate 60s during 90s blocks)
 
+## Reproducibility
+
+- The parameter recovery simulation (`simulations/parameter_recovery.py`) uses a fixed random seed for deterministic results.
+- Running the script writes a human-readable summary to `simulations/results.txt` and prints a Markdown table of recovery metrics.
+
 ## Development
 
-Framework developed in 24 hours using human-AI collaborative synthesis across:
 - Information theory (10 bits/s processing bottleneck)
 - Consciousness research (Integrated Information Theory)
 - Time perception literature (15+ years oddball studies)
@@ -88,7 +92,7 @@ Repository: https://github.com/WAR-0/TIC
 TIC builds on established findings:
 - Oddball temporal dilation (Tse et al., 2004)
 - Attentional gate models (Zakay & Block, 1995)
-- 10 bits/s consciousness bottleneck (Zheng & Meister, 2025)
+- 10 bits/s consciousness bottleneck (Zheng & Meister, 2024)
 - Perturbational Complexity Index (Casarotto et al., 2016)
 
 ## Limitations
