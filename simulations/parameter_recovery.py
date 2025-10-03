@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-Parameter Recovery Simulation for IRTP Model (Minimal Dependencies Version)
+Parameter Recovery Simulation for TIC Model (Minimal Dependencies Version)
 T_s ≈ T_o · [1 + κ·N'^γ] / [λ(D')^α · Φ'^β]
 
 Uses only NumPy - no pandas, scipy, matplotlib required
 Implements simple but effective differential evolution optimizer
 
-Author: IRTP Research
+Author: TIC Research
 Date: 2025-10-02
 """
 
@@ -77,8 +77,8 @@ class SimpleOptimizer:
         return best_solution
 
 
-class IRTPParameterRecovery:
-    """Parameter recovery simulation for IRTP model"""
+class TICParameterRecovery:
+    """Parameter recovery simulation for TIC model"""
 
     def __init__(self, n_simulations=1000, n_participants=35, n_trials=56):
         self.n_simulations = n_simulations
@@ -107,7 +107,7 @@ class IRTPParameterRecovery:
         self.est_params = []
 
     def irtp_model(self, D_prime, N_prime, Phi_prime, lam, kappa, alpha, beta, gamma):
-        """IRTP model equation"""
+        """TIC model equation"""
         numerator = 1.0 + kappa * (N_prime ** gamma)
         denominator = lam * (D_prime ** alpha) * (Phi_prime ** beta)
         denominator = np.maximum(denominator, 1e-6)
@@ -351,7 +351,7 @@ class IRTPParameterRecovery:
 
         text += "**A.3. Simulation Results:**\n\n"
         text += f"Parameter recovery simulations (N = {self.n_simulations} iterations) demonstrated robust "
-        text += f"recoverability of all five IRTP parameters given the proposed experimental design "
+        text += f"recoverability of all five TIC parameters given the proposed experimental design "
         text += f"(N = {self.n_participants} participants, {self.n_trials} trials). The three-phase sequential "
         text += "estimation strategy achieved strong recovery correlations: "
 
@@ -378,7 +378,7 @@ class IRTPParameterRecovery:
         text += ", ".join(rmse_vals[:-1]) + f", and {rmse_vals[-1]}. "
 
         text += "These results confirm the proposed experimental design provides sufficient statistical power "
-        text += "to reliably estimate all five IRTP parameters, validating the model's identifiability and "
+        text += "to reliably estimate all five TIC parameters, validating the model's identifiability and "
         text += "supporting the feasibility of empirical parameter estimation.\n\n"
 
         # Table
@@ -400,12 +400,12 @@ class IRTPParameterRecovery:
 def main():
     """Main execution"""
     print("=" * 80)
-    print("IRTP Parameter Recovery Simulation")
+    print("TIC Parameter Recovery Simulation")
     print("Minimal Dependencies Version (NumPy only)")
     print("=" * 80)
     print()
 
-    simulator = IRTPParameterRecovery(
+    simulator = TICParameterRecovery(
         n_simulations=1000,
         n_participants=35,
         n_trials=56

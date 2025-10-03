@@ -31,10 +31,19 @@ The asymmetric recovery validates TIC's core innovation—the compression mechan
 ## Repository Structure
 
 ```
-/manuscript/    # Theoretical framework and experimental design
-/simulations/   # Parameter recovery and validation code
-/figures/       # Conceptual diagrams
-/analysis/      # Power analysis and statistical validation
+TIC/
+├── manuscript/       # Main paper and theoretical framework
+│   └── TIC_manuscript.md
+├── figures/          # Visual diagrams and illustrations
+│   ├── figure1.html  # Interactive Figure 1 (dual-process model)
+│   ├── figure-1.png  # Complete figure
+│   └── panel-*.png   # Individual panels
+├── simulations/      # Parameter recovery validation
+│   ├── parameter_recovery.py
+│   └── results.txt
+├── scripts/          # Build and utility scripts
+│   └── make_pdf.sh
+└── readme.md
 ```
 
 ## Theoretical Contributions
