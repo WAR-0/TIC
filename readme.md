@@ -71,7 +71,7 @@ Framework developed in 24 hours using human-AI collaborative synthesis across:
 
 ```
 [Forthcoming - arXiv preprint]
-Repository: https://github.com/WAR-0/TEMPO
+Repository: https://github.com/WAR-0/TIC
 ```
 
 ## Related Work

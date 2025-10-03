@@ -1,11 +1,12 @@
 # Information Processing Speed Determines Subjective Time Duration: A Quantitative Theory of Prospective Time Perception
 
-**Authors:** [To be added based on your authorship]
-**Affiliations:** [To be added based on your institutional affiliation]
+**Author:** A. Lax
+**Affiliation:** Independent Researcher
+**Code:** https://github.com/WAR-0/TIC
 
 ## Abstract
 
-Subjective temporal experience during ongoing events exhibits remarkable malleability, with time seeming to "fly" during complex, engaging activities while "dragging" during monotony. We present the Information-Relativity Theory of Time Perception (IRTP), a quantitative model proposing that prospective duration judgments emerge from competing compression and dilation processes. The model formalizes this relationship as T_s ≈ T_o · [1 + κ·N'^γ] / [λ(D')^α · Φ'^β], where T_s is subjective duration, T_o is objective duration, D' is normalized information density (compression factor), N' is normalized novelty (dilation factor), and Φ' represents the system's integrative capacity. Sustained high-density information compresses subjective time while transient novelty dilates it, with the final experience determined by their relative strengths. We specify a pre-registered experimental paradigm using Rapid Serial Visual Presentation (RSVP) with systematically varied entropy levels (1.0-7.0 bits/frame), concurrent EEG recording measuring Lempel-Ziv complexity as proxy for Φ', with subset validation using TMS-evoked perturbational complexity index. The model makes specific, falsifiable predictions about the quantitative relationship between information metrics and temporal experience. While this paper focuses on prospective timing, we discuss how the framework must be extended to accommodate the well-documented prospective-retrospective dissociation where information load shows opposite effects on memory-based duration judgments.
+Subjective temporal experience during ongoing events exhibits remarkable malleability, with time seeming to "fly" during complex, engaging activities while "dragging" during monotony. We present The Information Clock (TIC), a quantitative framework proposing that prospective duration judgments emerge from competing compression and dilation processes. The model formalizes this relationship as T_s ≈ T_o · [1 + κ·N'^γ] / [λ(D')^α · Φ'^β], where T_s is subjective duration, T_o is objective duration, D' is normalized information density (compression factor), N' is normalized novelty (dilation factor), and Φ' represents the system's integrative capacity. Sustained high-density information compresses subjective time while transient novelty dilates it, with the final experience determined by their relative strengths. We specify a pre-registered experimental paradigm using Rapid Serial Visual Presentation (RSVP) with systematically varied entropy levels (1.0-7.0 bits/frame), concurrent EEG recording measuring Lempel-Ziv complexity as proxy for Φ', with subset validation using TMS-evoked perturbational complexity index. The model makes specific, falsifiable predictions about the quantitative relationship between information metrics and temporal experience. While this paper focuses on prospective timing, we discuss how the framework must be extended to accommodate the well-documented prospective-retrospective dissociation where information load shows opposite effects on memory-based duration judgments.
 
 **Keywords:** Time perception, Information theory, Prospective timing, Subjective experience, Consciousness, Integrated information, EEG, Phase-amplitude coupling, Lempel-Ziv complexity
 
@@ -19,7 +20,7 @@ Various psychological models have provided crucial insights into aspects of time
 
 However, these models have largely focused on explaining variance in timing tasks rather than providing a quantitative, information-theoretic account of why subjective time varies with cognitive content. Furthermore, a fundamental challenge for any unitary model is the well-established prospective-retrospective paradox: cognitive load and stimulus complexity compress time judgments made during an interval (prospective) but expand judgments made after an interval (retrospective) (Block et al., 2010; Zakay & Block, 1997). This dissociation suggests distinct mechanisms for online temporal experience versus memory-based temporal reconstruction (Hoerl & McCormack, 2019).
 
-Here we introduce the Information-Relativity Theory of Time Perception (IRTP), focusing specifically on prospective timing—the experience of duration as it unfolds. IRTP proposes that the subjective experience of ongoing time is inversely related to the information processing load placed on consciousness, formalized through specific information-theoretic metrics.
+Here we introduce The Information Clock (TIC), focusing specifically on prospective timing—the experience of duration as it unfolds. TIC proposes that the subjective experience of ongoing time is inversely related to the information processing load placed on consciousness, formalized through specific information-theoretic metrics.
 
 Critically, we treat Φ' as a stable individual trait reflecting baseline integrative capacity, rather than a dynamic state variable that fluctuates moment-to-moment during task performance. This framing avoids measurement circularity—where task-induced changes in neural complexity could confound duration judgments—while allowing Φ' to modulate how sustained information density (D') and transient novelty (N') are processed. The trait-based approach means our model predicts individual differences in time perception based on stable processing capacity, not state-dependent neural complexity changes during the experimental task.
 
@@ -29,14 +30,14 @@ While we acknowledge that a complete theory must address both prospective and re
 
 ### 2.1 Core Principles
 
-IRTP is founded on three principles linking information processing to prospective temporal experience:
+TIC is founded on three principles linking information processing to prospective temporal experience:
 
 1. **Information Load Principle**: The rate of subjective time flow is determined by the interplay of sustained information density and transient novelty, which have opposing effects:
 
    - **Sustained Information Density (D')**: Continuous high throughput (e.g., complex visual scenes, multi-tasking) diverts attentional resources from temporal monitoring, leading to time compression ("time flies when busy")
    - **Transient Novelty/Salience (N')**: Brief, surprising events (e.g., oddballs, sudden changes) capture attention and dilate perceived duration through enhanced encoding (Sherman et al., 2022; oddball effect literature)
 
-   The IRTP framework accommodates both effects through a dual-process architecture where D' operates in the denominator (compression) while N' operates in the numerator (dilation), allowing these mechanisms to compete.
+   The TIC framework accommodates both effects through a dual-process architecture where D' operates in the denominator (compression) while N' operates in the numerator (dilation), allowing these mechanisms to compete.
 
 2. **Integrative Capacity Principle**: Individual differences in baseline integrative capacity (Φ'_trait) modulate the efficiency of information processing. Individuals with higher trait integrative capacity can process sustained density (D') and transient novelty (N') more efficiently, leading to stronger time compression at equivalent information loads. This is a stable individual difference, not a within-task state fluctuation. This connects to broader frameworks like Integrated Information Theory (Tononi et al., 2016) which treats integrated information as a dispositional system property dependent on architecture rather than momentary state (Tononi, 2004; Oizumi et al., 2014). Perturbational Complexity Index (PCI) demonstrates exceptional test-retest stability suitable for trait measurement: parietal PCI achieves ICC = 0.927 (excellent reliability), motor PCI ICC = 0.857, and premotor PCI ICC = 0.737 across three sessions within one week (Caulfield et al., 2020; N=9). PCI reliably discriminates conscious from unconscious states with threshold PCI ≥ 0.31-0.44 (Casarotto et al., 2016). PCI shows graded sensitivity across consciousness levels: wakefulness (0.44-0.67), REM sleep (0.40-0.50), deep NREM sleep (0.18-0.28), propofol anesthesia (0.13-0.30), and xenon anesthesia (0.12-0.31) (Casarotto et al., 2016; Casali et al., 2013). Notably, ketamine anesthesia maintains high PCI (≥0.44) despite behavioral unresponsiveness, correlating with preserved subjective experiences (Sarasso et al., 2015). Convergent evidence supports treating neural complexity as trait capacity: resting-state complexity predicts working memory performance (r > 0.40, p < 0.001; Zhang et al., 2023), frontal gamma and central theta at baseline predict 76% of working memory variance (Kenney et al., 2016), and Brain State Complexity correlates with fluid intelligence (g_f) and crystallized intelligence (g_c) (Wang et al., 2019).
 
@@ -44,7 +45,7 @@ IRTP is founded on three principles linking information processing to prospectiv
 
 ### 2.2 Mathematical Formulation
 
-IRTP proposes that subjective duration (T_s) relates to objective duration (T_o) through a dual-process architecture:
+TIC proposes that subjective duration (T_s) relates to objective duration (T_o) through a dual-process architecture:
 
 **T_s ≈ T_o · [1 + κ·N'^γ] / [λ(D')^α · Φ'^β]**  (Equation 1)
 
@@ -87,7 +88,7 @@ This formulation ensures dimensional consistency and correctly predicts both com
 
 ### 2.3 Scope and Limitations
 
-This formulation specifically addresses prospective timing—duration judgments made during or immediately after an interval with foreknowledge that timing is relevant. We acknowledge that retrospective timing (memory-based judgments without prior timing intention) shows the opposite pattern, with high information load leading to longer duration estimates. This prospective-retrospective dissociation (Block & Zakay, 1997; Block et al., 2010) suggests that different mechanisms govern online temporal experience versus memory-based temporal reconstruction. Prospective timing relies on attention allocated to time itself, while retrospective timing depends on the contextual changes stored in memory (Zakay, 2014; Matthews & Meck, 2014). Future work must extend IRTP to incorporate dual-process architecture; here we establish the quantitative framework for the prospective component.
+This formulation specifically addresses prospective timing—duration judgments made during or immediately after an interval with foreknowledge that timing is relevant. We acknowledge that retrospective timing (memory-based judgments without prior timing intention) shows the opposite pattern, with high information load leading to longer duration estimates. This prospective-retrospective dissociation (Block & Zakay, 1997; Block et al., 2010) suggests that different mechanisms govern online temporal experience versus memory-based temporal reconstruction. Prospective timing relies on attention allocated to time itself, while retrospective timing depends on the contextual changes stored in memory (Zakay, 2014; Matthews & Meck, 2014). Future work must extend TIC to incorporate dual-process architecture; here we establish the quantitative framework for the prospective component.
 
 ### 2.4 Prospective and Retrospective Dissociations
 
@@ -96,7 +97,7 @@ An important distinction in timing research is between:
 - **Prospective timing:** Subjective duration experienced in real-time during an event
 - **Retrospective timing:** Estimated duration when recalling a past event from memory
 
-The IRTP framework primarily addresses **prospective timing**—the subjective flow of time during information processing. However, retrospective estimates can differ substantially from prospective experience due to memory encoding factors.
+The TIC framework primarily addresses **prospective timing**—the subjective flow of time during information processing. However, retrospective estimates can differ substantially from prospective experience due to memory encoding factors.
 
 **Implications for High-Arousal States:**
 
@@ -104,13 +105,13 @@ During threat or fear arousal, attentional narrowing may create a unique pattern
 - **Prospectively:** Narrow focus with high temporal resolution (many "frames per second" of limited content) may maintain or even increase local information density D', leading to time compression during the event
 - **Retrospectively:** Enhanced memory encoding of the narrow focus creates vivid, detailed memories that are interpreted as "slow motion" when recalled
 
-This "high-resolution narrowing" hypothesis could reconcile reports of subjective time dilation during threats with the IRTP prediction that high information density compresses time. The apparent contradiction may reflect a prospective-retrospective dissociation rather than a genuine theoretical failure.
+This "high-resolution narrowing" hypothesis could reconcile reports of subjective time dilation during threats with the TIC prediction that high information density compresses time. The apparent contradiction may reflect a prospective-retrospective dissociation rather than a genuine theoretical failure.
 
 Further research directly measuring prospective timing during controlled arousal states (e.g., using real-time duration production tasks) is needed to test this hypothesis.
 
-### 2.5 Empirical Precedents for IRTP
+### 2.5 Empirical Precedents for TIC
 
-The IRTP framework integrates findings from multiple converging research streams:
+The TIC framework integrates findings from multiple converging research streams:
 
 **Information Bottleneck:** Zheng & Meister (2025) estimate conscious processing throughput at approximately 10 bits per second across diverse tasks (reading, problem-solving, gaming), though empirical estimates range from 5-30 bits/s depending on task and methodology. Despite 10^9 bits/s sensory input, this bottleneck necessitates compression mechanisms that may distort temporal perception.
 
@@ -124,7 +125,7 @@ The IRTP framework integrates findings from multiple converging research streams
 
 **Psychedelic and Altered States:** Psilocybin selectively impairs timing for intervals >2-3 seconds, with inability to reproduce longer durations and slowed preferred tapping rate, co-occurring with working memory deficits and strong subjective time distortion reports (Wittmann et al., 2007). Critically, TMS-EEG studies show psilocybin maintains high PCI (no reduction in perturbational complexity) while dramatically increasing spontaneous EEG signal diversity (Ort et al., 2023), indicating unchanged integrative capacity despite profoundly altered phenomenal content. Similarly, ketamine at sub-anesthetic doses shows no significant PCI change while all measures of spontaneous EEG complexity increase, correlating with subjective intensity of altered consciousness (Farnes et al., 2020). These findings suggest Φ' reflects a stable conscious capacity while information content and temporal processing can vary independently. Conversely, sensory isolation (Ganzfeld) produces dramatic timing distortions: immersive monotonic environments lengthen produced durations significantly, with some participants reporting complete "disappearance" of time and showing breakdown of linear timing functions (Glicksohn et al., 2017).
 
-These converging lines support IRTP's core claim that information processing load and integrative capacity quantitatively determine prospective temporal experience.
+These converging lines support TIC's core claim that information processing load and integrative capacity quantitatively determine prospective temporal experience.
 
 ## 3. Operationalization of Key Constructs
 
@@ -191,7 +192,7 @@ Test-retest reliability is excellent (ICC = 0.857-0.927 for motor and parietal t
 
 ### 4.1 Overview
 
-We propose a pre-registered experiment combining psychophysics with concurrent EEG to test IRTP's core predictions. The design systematically manipulates information density and novelty while measuring subjective duration and neural markers of integrative processing.
+We propose a pre-registered experiment combining psychophysics with concurrent EEG to test TIC's core predictions. The design systematically manipulates information density and novelty while measuring subjective duration and neural markers of integrative processing.
 
 ### 4.2 Participants
 
@@ -281,7 +282,7 @@ These baseline measures reflect stable processing capacity, not task-induced sta
      - σ (residual) ~ Half-Cauchy(0, 5) [measurement noise]
 
 3. **Model Comparison**:
-   - Full IRTP model vs. simpler alternatives:
+   - Full TIC model vs. simpler alternatives:
      - M1: D'-only model (no novelty effect)
      - M2: N'-only model (no density effect)
      - M3: Additive D'+N' (no competition)
@@ -352,7 +353,7 @@ Following validated timing model precedents: 80-180 trials minimum for 4-6 param
 
 **Operational prediction**: Duration reproduction for high-density RSVP sequences (Block A: 7.0 bits/frame) will show significant underestimation relative to low-density sequences (1.0 bits/frame). Expected effect size: d ≈ 0.5-0.6 (medium), based on 15+ years of convergent evidence from independent laboratories (Tse et al., 2004; Pariyadath & Eagleman, 2007, 2012; Matthews & Meck, 2016).
 
-**Confirmatory Status**: Parameter recovery simulation (Appendix A) demonstrates good identifiability for density parameters (α: r = 0.799, λ: r = 0.796), supporting confirmatory testing of IRTP's novel information-compression mechanism.
+**Confirmatory Status**: Parameter recovery simulation (Appendix A) demonstrates good identifiability for density parameters (α: r = 0.799, λ: r = 0.796), supporting confirmatory testing of TIC's novel information-compression mechanism.
 
 *Precedent*: Visual complexity and cognitive load show inverse correlation with perceived duration in prospective timing tasks (van Wassenhove, 2009). Temporal oddball literature demonstrates Duration Distortion Factors of 1.05-1.15 (5-15% expansion) with Cohen's d = 0.5-0.6 representing well-established conservative estimates across multiple paradigms.
 
@@ -399,7 +400,7 @@ Expected interaction effect size: η² ≈ 0.05-0.10 (small to medium), as compe
 
 ### 5.2 Falsification Criteria
 
-IRTP would be falsified if:
+TIC would be falsified if:
 
 1. **Directional predictions fail**:
    - D' shows no effect or positive relationship with T_s (predicts negative)
@@ -420,11 +421,11 @@ IRTP would be falsified if:
 
 ### 6.1 Theoretical Contributions
 
-IRTP provides the first quantitative, information-theoretic model of prospective time perception with a mathematically rigorous dual-process architecture. By formalizing the relationship between measurable information properties (density, novelty) and subjective duration, it moves beyond descriptive accounts to testable mathematical predictions. The inclusion of the integrated information term (Φ') connects time perception to broader theories of consciousness, suggesting that temporal experience reflects fundamental aspects of information integration in conscious systems.
+TIC provides the first quantitative, information-theoretic model of prospective time perception with a mathematically rigorous dual-process architecture. By formalizing the relationship between measurable information properties (density, novelty) and subjective duration, it moves beyond descriptive accounts to testable mathematical predictions. The inclusion of the integrated information term (Φ') connects time perception to broader theories of consciousness, suggesting that temporal experience reflects fundamental aspects of information integration in conscious systems.
 
 ### 6.2 Model Architecture: Dual-Process Framework
 
-The IRTP equation has been specifically formulated to capture both compression and dilation effects through a dual-process architecture:
+The TIC equation has been specifically formulated to capture both compression and dilation effects through a dual-process architecture:
 
 **Compression Process (Denominator)**: Sustained information density (D') and integrative capacity (Φ') operate in the denominator, reducing T_s/T_o when increased. This reflects attentional diversion from temporal monitoring during continuous high-load processing. The mechanism is grounded in attentional gate models (Zakay & Block, 1995, 1996): when attention is allocated to processing dense information streams, fewer resources remain for temporal monitoring, causing subjective time to compress.
 
@@ -442,24 +443,24 @@ This framework maintains all core theoretical insights while ensuring mathematic
 
 ### 6.3 Relationship to Existing Models
 
-IRTP can be viewed as a formalization and extension of attentional gate models (Zakay & Block, 1995, 1996), which propose that attention to time versus non-temporal events modulates pulse accumulation but lack quantitative specification of information metrics. The denominator in Equation 1 functions analogously to an inverse gate: higher information load effectively "closes" the gate to temporal pulse accumulation. However, IRTP specifies the precise information-theoretic quantities that determine gate status and predicts specific quantitative relationships rather than merely directional effects.
+TIC can be viewed as a formalization and extension of attentional gate models (Zakay & Block, 1995, 1996), which propose that attention to time versus non-temporal events modulates pulse accumulation but lack quantitative specification of information metrics. The denominator in Equation 1 functions analogously to an inverse gate: higher information load effectively "closes" the gate to temporal pulse accumulation. However, TIC specifies the precise information-theoretic quantities that determine gate status and predicts specific quantitative relationships rather than merely directional effects.
 
 Predictive coding frameworks (Friston, 2010; Toren et al., 2020) emphasize prediction errors in temporal distortions, closely related to our N' term. State-dependent dynamics models (Paton & Buonomano, 2018) highlight neural trajectory complexity but don't formalize information-theoretic relationships.
 
-The Φ' component directly connects to Integrated Information Theory (IIT) (Tononi et al., 2016), which proposes integrated information as the substrate of consciousness. IRTP extends IIT by linking Φ' to temporal phenomenology, predicting that consciousness state (reflected in Φ') fundamentally shapes temporal experience.
+The Φ' component directly connects to Integrated Information Theory (IIT) (Tononi et al., 2016), which proposes integrated information as the substrate of consciousness. TIC extends IIT by linking Φ' to temporal phenomenology, predicting that consciousness state (reflected in Φ') fundamentally shapes temporal experience.
 
 ### 6.4 The Prospective-Retrospective Challenge
 
 The most significant limitation of the current formulation is its restriction to prospective timing. The well-documented finding that information load has opposite effects on prospective versus retrospective judgments (Block et al., 2010) indicates that a complete theory must incorporate dual processes. We hypothesize that:
 
-- Prospective timing reflects online processing constraints (captured by current IRTP)
+- Prospective timing reflects online processing constraints (captured by current TIC)
 - Retrospective timing reflects memory encoding density (requiring additional mechanisms)
 
-Future work will extend IRTP to a dual-process architecture, potentially with separate equations for each timing mode that converge under specific conditions. The current paper establishes the quantitative framework for the prospective component, which is necessary groundwork for this broader theory.
+Future work will extend TIC to a dual-process architecture, potentially with separate equations for each timing mode that converge under specific conditions. The current paper establishes the quantitative framework for the prospective component, which is necessary groundwork for this broader theory.
 
 ### 6.5 Arousal States and Temporal Perception
 
-High-arousal states (fear, threat, excitement) present a complex case for the IRTP framework. While the oddball effect and surprise-induced time dilation are well-established (Tse et al., 2004; Birngruber et al., 2018), these effects may reflect:
+High-arousal states (fear, threat, excitement) present a complex case for the TIC framework. While the oddball effect and surprise-induced time dilation are well-established (Tse et al., 2004; Birngruber et al., 2018), these effects may reflect:
 
 1. **Transient salience (N')** rather than sustained density (D')
 2. **Retrospective reconstruction** rather than prospective experience
@@ -475,13 +476,13 @@ This hypothesis requires direct testing through studies that:
 - Compare real-time vs. retrospective duration judgments for identical threatening events
 - Measure critical flicker fusion or temporal order judgment during arousal states
 
-Until such studies are conducted, the relationship between arousal and the IRTP framework remains an open question. The apparent contradiction between threat-induced "time dilation" reports and our prediction of compression under high information load may reflect a prospective-retrospective dissociation rather than a genuine theoretical failure.
+Until such studies are conducted, the relationship between arousal and the TIC framework remains an open question. The apparent contradiction between threat-induced "time dilation" reports and our prediction of compression under high information load may reflect a prospective-retrospective dissociation rather than a genuine theoretical failure.
 
 ### 6.6 Clinical and Practical Implications
 
-If validated, IRTP could have significant applications:
+If validated, TIC could have significant applications:
 
-**Clinical**: Temporal processing disorders show predicted IRTP profiles. ADHD is associated with timing underestimation and increased reaction time variability (Noreika et al., 2013), consistent with impaired D' processing and reduced information throughput. Stimulant medications improve timing precision by reducing RT variability (effect size g ≈ -0.74), though time perception deficits may persist despite symptomatic improvement (Barkley et al., 2001). Autism spectrum disorder shows temporal binding window abnormalities inversely correlated with alpha frequency modulation (Venskus et al., 2021), with multisensory integration windows up to 2-3 times wider than neurotypical controls (Foss-Feig et al., 2010; Kwakye et al., 2011). Schizophrenia tends to produce time interval overestimation, potentially reflecting aberrant N' (surprise processing) alongside reduced Φ' (25-40% reduction in neural integration; Northoff & Duncan, 2016). These disorder-specific patterns suggest IRTP parameters could serve as mechanistic biomarkers for temporal processing deficits, with potential applications in treatment monitoring and personalized intervention selection. Brain stimulation interventions targeting timing networks show promise: anodal tDCS to vmPFC improved time reproduction accuracy in ADHD children (Nejati et al., 2024), while rTMS to right supramarginal gyrus causally altered duration judgments in healthy adults (Wiener et al., 2010).
+**Clinical**: Temporal processing disorders show predicted TIC profiles. ADHD is associated with timing underestimation and increased reaction time variability (Noreika et al., 2013), consistent with impaired D' processing and reduced information throughput. Stimulant medications improve timing precision by reducing RT variability (effect size g ≈ -0.74), though time perception deficits may persist despite symptomatic improvement (Barkley et al., 2001). Autism spectrum disorder shows temporal binding window abnormalities inversely correlated with alpha frequency modulation (Venskus et al., 2021), with multisensory integration windows up to 2-3 times wider than neurotypical controls (Foss-Feig et al., 2010; Kwakye et al., 2011). Schizophrenia tends to produce time interval overestimation, potentially reflecting aberrant N' (surprise processing) alongside reduced Φ' (25-40% reduction in neural integration; Northoff & Duncan, 2016). These disorder-specific patterns suggest TIC parameters could serve as mechanistic biomarkers for temporal processing deficits, with potential applications in treatment monitoring and personalized intervention selection. Brain stimulation interventions targeting timing networks show promise: anodal tDCS to vmPFC improved time reproduction accuracy in ADHD children (Nejati et al., 2024), while rTMS to right supramarginal gyrus causally altered duration judgments in healthy adults (Wiener et al., 2010).
 
 **Technology**: Virtual reality and interface design could manipulate information density to alter time perception in predictable ways, with applications for training, therapy, and user experience optimization.
 
@@ -501,7 +502,7 @@ These state effects likely exist but are not captured in the current model. Inco
 
 Beyond extending to retrospective timing, future research should:
 
-1. Test IRTP across sensory modalities, including auditory and tactile timing where integration windows differ (Keetels & Vroomen, 2012; Noel et al., 2015)
+1. Test TIC across sensory modalities, including auditory and tactile timing where integration windows differ (Keetels & Vroomen, 2012; Noel et al., 2015)
 2. Examine individual differences in parameters λ, α, β and their stability as trait markers
 3. Investigate pharmacological manipulations affecting Φ', including psychedelics which alter time perception without reducing integrated information (Ort et al., 2023; Wittmann et al., 2007; Farnes et al., 2020)
 4. Develop real-time Φ' estimation for brain-computer interfaces using validated EEG proxies (Sitt et al., 2014)
@@ -509,7 +510,7 @@ Beyond extending to retrospective timing, future research should:
 
 ## 7. Conclusion
 
-The Information-Relativity Theory of Time Perception offers a quantitative framework linking information processing to prospective temporal experience through a dual-process architecture. By proposing that subjective duration emerges from competing compression and dilation mechanisms—formalized as T_s ≈ T_o · [1 + κ·N'^γ] / [λ(D')^α · Φ'^β]—IRTP makes specific, testable predictions about how we experience time's passage. The model correctly predicts that sustained information density compresses time while transient novelty dilates it, with integrative capacity modulating both effects. While acknowledging the need for extension to retrospective timing, this framework provides a mathematically rigorous foundation for understanding one of consciousness's most fundamental features: the subjective flow of time.
+The Information Clock (TIC) offers a quantitative framework linking information processing to prospective temporal experience through a dual-process architecture. By proposing that subjective duration emerges from competing compression and dilation mechanisms—formalized as T_s ≈ T_o · [1 + κ·N'^γ] / [λ(D')^α · Φ'^β]—TIC makes specific, testable predictions about how we experience time's passage. The model correctly predicts that sustained information density compresses time while transient novelty dilates it, with integrative capacity modulating both effects. While acknowledging the need for extension to retrospective timing, this framework provides a mathematically rigorous foundation for understanding one of consciousness's most fundamental features: the subjective flow of time.
 
 ## References
 
@@ -669,7 +670,7 @@ Confirm that parameters λ, κ, α, β, γ in Equation 1 can be reliably recover
 
 Parameter recovery simulations (N = 1000 iterations) revealed differential identifiability across model components given the proposed experimental design (N = 35 participants, 1960 total observations across 56 trials per participant).
 
-**Compression Parameters** (Novel IRTP Mechanism) showed **good recovery**:
+**Compression Parameters** (Novel TIC Mechanism) showed **good recovery**:
 - λ (scaling constant): r = 0.796, bias = 5.9% of range
 - α (density exponent): r = 0.799, bias = 5.0% of range
 - β (Φ' modulation): r = 0.794, bias = 3.2% of range
@@ -698,9 +699,9 @@ Parameter recovery simulations (N = 1000 iterations) revealed differential ident
 
 **Asymmetric Recovery Reflects Design Priorities**: The differential identifiability directly reflects experimental resource allocation. Block A (density manipulation) provides 40 trials across 5 levels (8 observations per level), enabling robust estimation of compression parameters {λ, α, β}. Block B (novelty manipulation) provides only 16 trials across 2 levels (8 observations per level), constraining dilation parameter {κ, γ} precision.
 
-**Theoretical Significance**: This asymmetry validates IRTP's design priorities. Compression parameters (r ≈ 0.80) represent the **novel theoretical contribution**—the information-density mechanism linking sustained information load to temporal compression. These parameters are well-identified. Dilation parameters (r ≈ 0.50) reproduce the **established oddball effect** already validated across 15+ years of independent research (Tse et al., 2004; Pariyadath & Eagleman, 2012; Matthews & Meck, 2016). Lower precision here is acceptable given the effect is not theoretically novel.
+**Theoretical Significance**: This asymmetry validates TIC's design priorities. Compression parameters (r ≈ 0.80) represent the **novel theoretical contribution**—the information-density mechanism linking sustained information load to temporal compression. These parameters are well-identified. Dilation parameters (r ≈ 0.50) reproduce the **established oddball effect** already validated across 15+ years of independent research (Tse et al., 2004; Pariyadath & Eagleman, 2012; Matthews & Meck, 2016). Lower precision here is acceptable given the effect is not theoretically novel.
 
-**Practical Consequence**: Moderate novelty parameter recovery limits precision of dilation effect quantification but does not undermine IRTP's core theoretical predictions. Following Luzardo et al. (2013) benchmarks, compression parameters exceed r > 0.80 "good recovery" threshold, while dilation parameters fall in the "moderate" range requiring exploratory rather than confirmatory framing.
+**Practical Consequence**: Moderate novelty parameter recovery limits precision of dilation effect quantification but does not undermine TIC's core theoretical predictions. Following Luzardo et al. (2013) benchmarks, compression parameters exceed r > 0.80 "good recovery" threshold, while dilation parameters fall in the "moderate" range requiring exploratory rather than confirmatory framing.
 
 ### A.5 Conclusions and Recommendations
 
@@ -712,4 +713,4 @@ Parameter recovery simulations (N = 1000 iterations) revealed differential ident
 
 **Future Improvements**: Expanding Block B to 3-4 novelty levels with 10-12 trials per level (total 30-48 novelty trials) would likely improve dilation parameter recovery to r > 0.70, enabling confirmatory testing of novelty effects in subsequent studies.
 
-**Validation of Core Innovation**: The simulation confirms that IRTP's novel information-compression mechanism is identifiable and testable with the proposed design (N = 35, 56 trials), supporting empirical validation of the framework's primary theoretical contribution.
+**Validation of Core Innovation**: The simulation confirms that TIC's novel information-compression mechanism is identifiable and testable with the proposed design (N = 35, 56 trials), supporting empirical validation of the framework's primary theoretical contribution.
