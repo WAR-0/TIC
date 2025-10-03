@@ -1,10 +1,10 @@
-# TEMPO
+# TIC (The Information Clock)
 
 A dual-process mathematical framework for prospective time perception through information dynamics.
 
 ## Abstract
 
-Time perception compresses under sustained information load while dilating under transient novelty. TEMPO formalizes this through competing mechanisms: sustained information density drives temporal compression ("time flies when busy") while transient novelty drives temporal dilation (oddball effect). The framework quantifies how information processing speed determines subjective duration.
+Time perception compresses under sustained information load while dilating under transient novelty. TIC formalizes this through competing mechanisms: sustained information density drives temporal compression ("time flies when busy") while transient novelty drives temporal dilation (oddball effect). The framework quantifies how information processing speed determines subjective duration.
 
 ## Core Model
 
@@ -26,7 +26,7 @@ Parameter recovery validation (N=35, 1960 observations):
 - **Dilation parameters** (known effects): r ≈ 0.50, confirming established oddball phenomena
 - Mean recovery: r = 0.677 across all parameters
 
-The asymmetric recovery validates TEMPO's core innovation—the compression mechanism—while acknowledging that transient novelty effects require expanded experimental trials.
+The asymmetric recovery validates TIC's core innovation—the compression mechanism—while acknowledging that transient novelty effects require expanded experimental trials.
 
 ## Repository Structure
 
@@ -76,7 +76,7 @@ Repository: https://github.com/WAR-0/TIC
 
 ## Related Work
 
-TEMPO builds on established findings:
+TIC builds on established findings:
 - Oddball temporal dilation (Tse et al., 2004)
 - Attentional gate models (Zakay & Block, 1995)
 - 10 bits/s consciousness bottleneck (Zheng & Meister, 2025)
