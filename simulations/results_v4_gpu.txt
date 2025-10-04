@@ -1,0 +1,20 @@
+TIC Parameter Recovery v4 (GPU)
+==========================================================================================
+Simulations       : 500
+Participants      : 35
+Trials/participant: 84
+
+Parameter Table
+------------------------------------------------------------------------------------------
+Parameter         r       Bias   RelBias%       RMSE        MAE
+------------------------------------------------------------------------------------------
+D0          -0.569     0.076      50.9     0.079     0.076
+lambda       0.079     0.280      11.2     0.399     0.311
+kappa        0.356     0.203      10.7     0.269     0.218
+gamma        0.139    -0.574     -31.9     0.619     0.575
+rho          0.625     0.016       0.4     0.135     0.100
+------------------------------------------------------------------------------------------
+Notes:
+  • Hierarchical D₀ with strong priors, JAX-accelerated optimization.
+  • Calibration block: 6 density levels × 5 trials, zero lapses, 2.5% noise.
+  • Objective compiled on GPU; first run includes JIT warm-up.

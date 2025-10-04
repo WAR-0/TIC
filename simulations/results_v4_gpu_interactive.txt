@@ -1,0 +1,19 @@
+TIC Parameter Recovery v4 (GPU - Interactive)
+==========================================================================================
+Simulations       : 20
+Participants      : 35
+Trials/participant: 84
+
+Parameter Table
+------------------------------------------------------------------------------------------
+Parameter           r       Bias   RelBias%       RMSE        MAE
+------------------------------------------------------------------------------------------
+D0            -0.715     0.078      52.3     0.081     0.078
+lambda         0.024     0.285      11.4     0.418     0.321
+kappa          0.335     0.196      10.3     0.268     0.216
+gamma          0.139    -0.573     -31.8     0.617     0.573
+rho            0.608     0.007       0.2     0.137     0.100
+------------------------------------------------------------------------------------------
+Notes:
+  • Hierarchical D₀ with strong priors, JAX-accelerated optimization.
+  • Interactive mode with real-time progress monitoring.
