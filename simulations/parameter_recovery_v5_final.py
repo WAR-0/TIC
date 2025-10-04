@@ -297,7 +297,7 @@ class TICParameterRecoveryV5:
         )
 
         gam_pen = ((gam - self.prior_means["gamma"]) / self.prior_scales["gamma"]) ** 2
-``PY
+
         total_loss += self.prior_weights["gamma"] * np.sum(gam_pen)
         grad_gam += self.prior_weights["gamma"] * 2.0 * (
             (gam - self.prior_means["gamma"]) / (self.prior_scales["gamma"] ** 2)
@@ -385,7 +385,7 @@ class TICParameterRecoveryV5:
         gam, _ = self._transform(gam_z, *self.bounds["gamma"])
 
         return {
-            "D0": float(D0),
+            "D0": float(D0.item()) if hasattr(D0, "item") else float(D0),
             "lambda": lam,
             "kappa": kap,
             "gamma": gam,

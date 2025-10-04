@@ -1,0 +1,21 @@
+TIC Parameter Recovery v5
+==========================================================================================
+Simulations       : 3
+Participants      : 35
+Trials/participant: 69
+
+Parameter Table
+------------------------------------------------------------------------------------------
+Parameter         r       Bias   RelBias%       RMSE        MAE
+------------------------------------------------------------------------------------------
+D0          -0.718     0.199      52.4     0.201     0.199
+lambda       0.826    -0.259     -10.0     0.296     0.272
+kappa        0.568    -0.018      -0.9     0.105     0.083
+gamma       -0.001    -0.059      -3.3     0.227     0.169
+rho          0.660     0.050       1.0     0.129     0.088
+------------------------------------------------------------------------------------------
+Notes:
+  • Evidence-aligned priors reflecting literature uncertainty.
+  • Ex-Gaussian noise for asymmetric attentional lapses.
+  • Hierarchical shared D₀ with per-participant λ, κ, γ.
+  • Design: density, novelty, and structured low-density blocks only.
