@@ -6,21 +6,19 @@ Goal
 ----
 Operationalize the "Earn the Complexity" strategy: retain the full 4-parameter TIC
 model and demonstrate identifiability under hardened noise using an enriched
-experimental design, hierarchical estimation, and strong literature-backed
-priors.
+experimental design, hierarchical estimation, and literature-backed priors.
 
 Model
 -----
     T_s / T_o ≈ [1 + κ·N'^γ] / [λ · (D₀ + D_eff) · Φ']
 
-Key Upgrades Over v3
---------------------
-1. Priors-as-penalties (from cognitive anchors) enter both calibration and
-   participant-level objectives.
+Key Refinements
+---------------
+1. Priors-as-penalties anchor parameters to empirically grounded ranges.
 2. Hierarchical estimation: a single group-level D₀ is inferred jointly with
    per-participant λ, κ, γ in a unified optimization.
-3. Calibration block strengthened: more trials, reduced noise, and no lapses to
-   anchor D₀ and λ cleanly.
+3. Calibration block removed in favor of structured low-density trials that
+   respect empirical constraints from sensory deprivation literature.
 4. Retains v3 design fixes: Φ'-independent D_eff mapping, novelty-density
    orthogonalization, Huber losses, and lapse mixture elsewhere.
 """
@@ -63,15 +61,15 @@ class TICParameterRecoveryV4:
         # Priors (cognitive anchors)
         self.prior_means = {
             "D0": 0.12,
-            "lambda": 1.2,
+            "lambda": 1.0,
             "kappa": 0.7,
             "gamma": 1.0,
         }
         self.prior_scales = {
             "D0": 0.03,
-            "lambda": 0.35,   # on log scale
+            "lambda": 0.4,    # on log scale
             "kappa": 0.5,     # on log scale
-            "gamma": 0.3,
+            "gamma": 0.5,
         }
         self.prior_weights = {
             "D0": 80.0,   # strong
@@ -82,18 +80,17 @@ class TICParameterRecoveryV4:
 
         # Experimental design parameters
         self.density_levels = np.array([0.125, 0.3125, 0.5, 0.6875, 0.875])  # Block A
+        self.low_density_levels = np.array([0.05, 0.15, 0.30])               # Structured low-density block
         self.novelty_levels = np.array([0.2, 0.4, 0.6, 0.8])                 # Block B
         self.fixed_density_block_b = 0.25
-        self.calibration_density_levels = np.array([0.0, 0.05, 0.15, 0.30, 0.60, 1.00])
 
         self.n_trials_per_density = 6
+        self.n_trials_per_low_density = 5
         self.n_trials_per_novelty = 6
-        self.n_trials_per_calib = 5   # beefed up calibration block
 
         self.lapse_rate = 0.05
         self.student_t_df = 4
         self.novelty_mismatch_sd = 0.1
-        self.calibration_noise_scale = 0.025  # halved noise, no lapses
 
         self.true_params: List[Dict[str, np.ndarray]] = []
         self.est_params: List[Dict[str, np.ndarray]] = []
@@ -199,20 +196,30 @@ class TICParameterRecoveryV4:
                     Phi_vals.append(Phi_prime)
                     Ts_vals.append(T_s)
 
-            # Block C: calibration (N' = 0, boosted trials, low noise, no lapses)
-            for density_calib in self.calibration_density_levels:
-                D_eff = self.effective_density_map(density_calib)
-                for _ in range(self.n_trials_per_calib):
-                    phi_state = np.random.normal(0, 0.05)
+            # Structured low-density block (minimal stimulation without deprivation)
+            for low_density in self.low_density_levels:
+                D_eff_low = self.effective_density_map(low_density)
+                for _ in range(self.n_trials_per_low_density):
+                    phi_state = np.random.normal(0, 0.08)
                     Phi_prime = np.clip(phi_trait[pid] + phi_state, 0.2, 2.0)
-                    numerator = 1.0
-                    denom = lam * (D0_true + D_eff) * Phi_prime
+                    N_prime_true = np.clip(np.random.normal(0.12, 0.04), 0.01, 0.35)
+                    N_prime_obs = np.clip(
+                        N_prime_true + np.random.normal(0, self.novelty_mismatch_sd / 2.0),
+                        0.01,
+                        0.45,
+                    )
+                    numerator = 1.0 + kap * (N_prime_true ** gam)
+                    denom = lam * (D0_true + D_eff_low) * Phi_prime
                     T_s_true = self.T_o * numerator / np.maximum(denom, 1e-6)
-                    noise = np.random.standard_t(self.student_t_df) * (self.calibration_noise_scale * self.T_o)
-                    T_s = np.clip(T_s_true + noise, 10.0, 120.0)
 
-                    D_eff_vals.append(D_eff)
-                    N_obs_vals.append(0.0)
+                    if np.random.rand() < self.lapse_rate:
+                        T_s = np.random.uniform(20.0, 100.0)
+                    else:
+                        noise = np.random.standard_t(self.student_t_df) * (0.06 * self.T_o)
+                        T_s = np.clip(T_s_true + noise, 5.0, 120.0)
+
+                    D_eff_vals.append(D_eff_low)
+                    N_obs_vals.append(N_prime_obs)
                     Phi_vals.append(Phi_prime)
                     Ts_vals.append(T_s)
 
@@ -425,11 +432,11 @@ class TICParameterRecoveryV4:
         print(f"Running {self.n_simulations} definitive recovery simulations (v4)...")
         total_trials = (
             len(self.density_levels) * self.n_trials_per_density
+            + len(self.low_density_levels) * self.n_trials_per_low_density
             + len(self.novelty_levels) * self.n_trials_per_novelty
-            + len(self.calibration_density_levels) * self.n_trials_per_calib
         )
         print(f"Participants: {self.n_participants} | Trials per participant: {total_trials}")
-        print("Design: calibration emphasis, hierarchical estimation, strong priors.\n")
+        print("Design: structured low-density emphasis, hierarchical estimation, strong priors.\n")
 
         for sim in range(self.n_simulations):
             participants, true_params = self.generate_synthetic_data()
@@ -520,7 +527,7 @@ class TICParameterRecoveryV4:
         lines.append("-" * 90)
         lines.append("Notes:")
         lines.append("  • Hierarchical estimation of a shared D₀ with participant-level λ, κ, γ.")
-        lines.append("  • Calibration block: 6 density levels × 5 trials, zero lapses, 2.5% noise.")
+        lines.append("  • Structured low-density block (0.05–0.30) replaces zero-stimulus calibration.")
         lines.append("  • Priors (λ, κ, γ, D₀) enforced via quadratic penalties grounded in literature.")
         lines.append("  • Retains Φ'-independent D_eff and Huber loss with lapse mixture noise elsewhere.")
         lines.append("")
@@ -538,8 +545,8 @@ def main():
 
     trials_per_participant = (
         len(simulator.density_levels) * simulator.n_trials_per_density
+        + len(simulator.low_density_levels) * simulator.n_trials_per_low_density
         + len(simulator.novelty_levels) * simulator.n_trials_per_novelty
-        + len(simulator.calibration_density_levels) * simulator.n_trials_per_calib
     )
     results_path = os.path.join(os.path.dirname(__file__), "results_v4.txt")
     simulator._write_results(results_path, stats, simulator.n_simulations, simulator.n_participants, trials_per_participant)

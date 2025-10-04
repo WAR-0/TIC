@@ -90,29 +90,28 @@ class TICParameterRecoveryV4GPU:
             "gamma": (0.2, 2.0),
         }
         # Priors
-        self.prior_means = {"D0": 0.12, "lambda": 1.2, "kappa": 0.7, "gamma": 1.0}
-        self.prior_scales = {"D0": 0.03, "lambda": 0.35, "kappa": 0.5, "gamma": 0.3}
+        self.prior_means = {"D0": 0.12, "lambda": 1.0, "kappa": 0.7, "gamma": 1.0}
+        self.prior_scales = {"D0": 0.03, "lambda": 0.4, "kappa": 0.5, "gamma": 0.5}
         self.prior_weights = {"D0": 80.0, "lambda": 10.0, "kappa": 10.0, "gamma": 10.0}
 
         # Design
         self.density_levels = np.array([0.125, 0.3125, 0.5, 0.6875, 0.875])
+        self.low_density_levels = np.array([0.05, 0.15, 0.30])
         self.novelty_levels = np.array([0.2, 0.4, 0.6, 0.8])
         self.fixed_density_block_b = 0.25
-        self.calibration_density_levels = np.array([0.0, 0.05, 0.15, 0.30, 0.60, 1.00])
 
         self.n_trials_per_density = 6
+        self.n_trials_per_low_density = 5
         self.n_trials_per_novelty = 6
-        self.n_trials_per_calib = 5
 
         self.lapse_rate = 0.05
         self.student_t_df = 4
         self.novelty_mismatch_sd = 0.1
-        self.calibration_noise_scale = 0.025
 
         self.trials_per_participant = (
             len(self.density_levels) * self.n_trials_per_density
+            + len(self.low_density_levels) * self.n_trials_per_low_density
             + len(self.novelty_levels) * self.n_trials_per_novelty
-            + len(self.calibration_density_levels) * self.n_trials_per_calib
         )
 
         self.delta = 1.0
@@ -138,7 +137,7 @@ class TICParameterRecoveryV4GPU:
         D0_true = self.sample_truncated(self.prior_means["D0"], 0.02, *self.bounds["D0"], size=1)[0]
         lambda_true = self.sample_truncated(self.prior_means["lambda"], 0.20, *self.bounds["lambda"], size=nP)
         kappa_true = self.sample_truncated(self.prior_means["kappa"], 0.15, *self.bounds["kappa"], size=nP)
-        gamma_true = self.sample_truncated(self.prior_means["gamma"], 0.12, *self.bounds["gamma"], size=nP)
+        gamma_true = self.sample_truncated(self.prior_means["gamma"], 0.15, *self.bounds["gamma"], size=nP)
 
         phi_trait = np.clip(self.rng.normal(1.0, 0.15, nP), 0.5, 1.6)
 
@@ -195,17 +194,23 @@ class TICParameterRecoveryV4GPU:
                     Ts_mat[pid, idx] = T_s
                     idx += 1
 
-            # Block C: Calibration
-            for density_calib in self.calibration_density_levels:
-                D_eff = self.effective_density_map(density_calib)
-                for _ in range(self.n_trials_per_calib):
-                    Phi_prime = np.clip(phi_trait[pid] + self.rng.normal(0, 0.05), 0.2, 2.0)
-                    denominator = lam * (D0_true + D_eff) * Phi_prime
-                    T_s_true = self.T_o / max(denominator, 1e-6)
-                    noise = self.rng.standard_t(self.student_t_df) * (self.calibration_noise_scale * self.T_o)
-                    T_s = np.clip(T_s_true + noise, 10.0, 120.0)
+            # Structured low-density block (minimal stimulation without deprivation)
+            for low_density in self.low_density_levels:
+                D_eff = self.effective_density_map(low_density)
+                for _ in range(self.n_trials_per_low_density):
+                    Phi_prime = np.clip(phi_trait[pid] + self.rng.normal(0, 0.08), 0.2, 2.0)
+                    N_true = np.clip(self.rng.normal(0.12, 0.04), 0.01, 0.35)
+                    N_obs = np.clip(N_true + self.rng.normal(0, self.novelty_mismatch_sd / 2.0), 0.01, 0.45)
+                    numerator = 1.0 + kap * (N_true ** gam)
+                    denom = lam * (D0_true + D_eff) * Phi_prime
+                    T_s_true = self.T_o * numerator / max(denom, 1e-6)
+                    if self.rng.random() < self.lapse_rate:
+                        T_s = self.rng.uniform(20.0, 100.0)
+                    else:
+                        noise = self.rng.standard_t(self.student_t_df) * (0.06 * self.T_o)
+                        T_s = np.clip(T_s_true + noise, 5.0, 120.0)
                     D_eff_mat[pid, idx] = D_eff
-                    N_obs_mat[pid, idx] = 0.0
+                    N_obs_mat[pid, idx] = N_obs
                     Phi_mat[pid, idx] = Phi_prime
                     Ts_mat[pid, idx] = T_s
                     idx += 1
