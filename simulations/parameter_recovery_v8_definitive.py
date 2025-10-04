@@ -376,7 +376,7 @@ class TICParameterRecoveryV8:
         plt.close(fig)
         print(f"  Diagnostics saved to {output_dir}/sim_{sim_idx:03d}_*")
 
-    def run(self, chains: int = 4) -> None:
+    def run(self, chains: int = 4, target_accept: float = 0.95) -> None:
         print("Running TIC Parameter Recovery v8 (hierarchical, bookend design)")
         print(f"Simulations: {self.n_simulations} | Participants per simulation: {self.n_participants}\n")
 
@@ -384,7 +384,7 @@ class TICParameterRecoveryV8:
         for sim in range(self.n_simulations):
             print(f"--- Simulation {sim + 1}/{self.n_simulations} ---")
             participants, true_params = self.generate_synthetic_data()
-            idata = self.estimate_with_pymc(participants, chains=chains)
+            idata = self.estimate_with_pymc(participants, chains=chains, target_accept=target_accept)
             self.save_diagnostics(idata, sim)
             est_means = self.compute_posterior_means(idata)
             stats = self.compute_statistics(true_params["individual"], est_means)
@@ -448,6 +448,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--draws", type=int, default=1000, help="Posterior draws per chain (default: 1000)")
     parser.add_argument("--tune", type=int, default=1000, help="Tuning steps (default: 1000)")
     parser.add_argument("--chains", type=int, default=4, help="Number of chains (default: 4)")
+    parser.add_argument("--target-accept", type=float, default=0.95, help="Target acceptance rate (default: 0.95)")
     parser.add_argument("--seed", type=int, default=12345, help="Random seed (default: 12345)")
     return parser.parse_args()
 
@@ -461,7 +462,7 @@ def main() -> None:
         draws=args.draws,
         tune=args.tune,
     )
-    recovery.run(chains=args.chains)
+    recovery.run(chains=args.chains, target_accept=args.target_accept)
 
 
 if __name__ == "__main__":
