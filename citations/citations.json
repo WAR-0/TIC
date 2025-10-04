@@ -1,1 +1,313 @@
-[]
+[
+  {
+    "id": "pending_f2cf9881",
+    "url": null,
+    "doi": "10.1098/rspb.2023.1234",
+    "source": "TIC_local",
+    "validation_status": "pending",
+    "authors": [],
+    "year": null,
+    "title": "[Pending extraction]",
+    "journal": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "pmid": null,
+    "type": "unknown",
+    "abstract": null,
+    "tags": [
+      "TIC_v2.1_update"
+    ]
+  },
+  {
+    "id": "pending_a2d56a5b",
+    "url": null,
+    "doi": "10.1007/s00426-010-0306-y",
+    "source": "TIC_local",
+    "validation_status": "pending",
+    "authors": [],
+    "year": null,
+    "title": "[Pending extraction]",
+    "journal": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "pmid": null,
+    "type": "unknown",
+    "abstract": null,
+    "tags": [
+      "TIC_v2.1_update"
+    ]
+  },
+  {
+    "id": "pending_72c8cc1e",
+    "url": "https://www.repository.cam.ac.uk/items/handle/1810/252987",
+    "doi": null,
+    "source": "TIC_local",
+    "validation_status": "pending",
+    "authors": [],
+    "year": null,
+    "title": "[Pending extraction]",
+    "journal": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "pmid": null,
+    "type": "unknown",
+    "abstract": null,
+    "tags": [
+      "TIC_v2.1_update"
+    ]
+  },
+  {
+    "id": "pending_6b06dbd8",
+    "url": null,
+    "doi": "10.1371/journal.pcbi.1008590",
+    "source": "TIC_local",
+    "validation_status": "pending",
+    "authors": [],
+    "year": null,
+    "title": "[Pending extraction]",
+    "journal": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "pmid": null,
+    "type": "unknown",
+    "abstract": null,
+    "tags": [
+      "TIC_v2.1_update"
+    ]
+  },
+  {
+    "id": "unknown2018perce",
+    "url": null,
+    "doi": "10.3389/fpsyg.2018.00017",
+    "source": "TIC_local",
+    "validation_status": "complete",
+    "authors": [],
+    "year": 2018,
+    "title": "Perceptual Characterization of the Macronutrient Picture System (MaPS) for Food Image fMRI",
+    "journal": "Frontiers in Psychology",
+    "volume": "9",
+    "issue": null,
+    "pages": null,
+    "pmid": null,
+    "type": "unknown",
+    "abstract": null,
+    "tags": [
+      "TIC_v2.1_update"
+    ],
+    "publisher": "Frontiers Media SA",
+    "enriched_at": "2025-10-03T21:06:23"
+  },
+  {
+    "id": "unknown2024revis",
+    "url": null,
+    "doi": "10.3390/math13010077",
+    "source": "TIC_local",
+    "validation_status": "complete",
+    "authors": [],
+    "year": 2024,
+    "title": "Revisiting Information Cascades in Online Social Networks",
+    "journal": "Mathematics",
+    "volume": "13",
+    "issue": "1",
+    "pages": "77",
+    "pmid": null,
+    "type": "unknown",
+    "abstract": null,
+    "tags": [
+      "TIC_v2.1_update"
+    ],
+    "publisher": "MDPI AG",
+    "enriched_at": "2025-10-03T21:06:24"
+  },
+  {
+    "id": "pending_62414bfe",
+    "url": null,
+    "doi": "10.1162/jocn.2007.19.4.555",
+    "source": "TIC_local",
+    "validation_status": "pending",
+    "authors": [],
+    "year": null,
+    "title": "[Pending extraction]",
+    "journal": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "pmid": null,
+    "type": "unknown",
+    "abstract": null,
+    "tags": [
+      "TIC_v2.1_update"
+    ]
+  },
+  {
+    "id": "unknown2014quick",
+    "url": null,
+    "doi": "10.1167/14.8.3",
+    "source": "TIC_local",
+    "validation_status": "complete",
+    "authors": [],
+    "year": 2014,
+    "title": "Quick contrast sensitivity measurements in the periphery",
+    "journal": "Journal of Vision",
+    "volume": "14",
+    "issue": "8",
+    "pages": "3-3",
+    "pmid": null,
+    "type": "unknown",
+    "abstract": null,
+    "tags": [
+      "TIC_v2.1_update"
+    ],
+    "publisher": "Association for Research in Vision and Ophthalmology (ARVO)",
+    "enriched_at": "2025-10-03T21:06:25"
+  },
+  {
+    "id": "unknown2018unrea",
+    "url": "https://arxiv.org/abs/1801.03924",
+    "doi": null,
+    "source": "TIC_local",
+    "validation_status": "complete",
+    "authors": [],
+    "year": 2018,
+    "title": "The Unreasonable Effectiveness of Deep Features as a Perceptual Metric",
+    "journal": "arXiv",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "pmid": null,
+    "type": "unknown",
+    "abstract": "While it is nearly effortless for humans to quickly assess the perceptual\nsimilarity between two images, the underlying processes are thought to be quite\ncomplex. Despite this, the most widely used perceptual metrics today, such as\nPSNR and SSIM, are simple, shallow functions, and fail to account for many\nnuances of human perception. Recently, the deep learning community has found\nthat features of the VGG network trained on ImageNet classification has been\nremarkably useful as a training loss fo",
+    "tags": [
+      "TIC_v2.1_update"
+    ],
+    "enriched_at": "2025-10-03T21:06:26"
+  },
+  {
+    "id": "unknown2014neura",
+    "url": "https://arxiv.org/abs/1411.6422",
+    "doi": null,
+    "source": "TIC_local",
+    "validation_status": "complete",
+    "authors": [],
+    "year": 2014,
+    "title": "Deep Neural Networks Reveal a Gradient in the Complexity of Neural\n  Representations across the Brain's Ventral Visual Pathway",
+    "journal": "arXiv",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "pmid": null,
+    "type": "unknown",
+    "abstract": "Converging evidence suggests that the mammalian ventral visual pathway\nencodes increasingly complex stimulus features in downstream areas. Using deep\nconvolutional neural networks, we can now quantitatively demonstrate that there\nis indeed an explicit gradient for feature complexity in the ventral pathway of\nthe human brain. Our approach also allows stimulus features of increasing\ncomplexity to be mapped across the human brain, providing an automated approach\nto probing how representations are m",
+    "tags": [
+      "TIC_v2.1_update"
+    ],
+    "enriched_at": "2025-10-03T21:06:26"
+  },
+  {
+    "id": "unknown2024multi",
+    "url": "https://arxiv.org/abs/2408.04076",
+    "doi": null,
+    "source": "TIC_local",
+    "validation_status": "complete",
+    "authors": [],
+    "year": 2024,
+    "title": "Multi-scale structural complexity as a quantitative measure of visual\n  complexity",
+    "journal": "arXiv",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "pmid": null,
+    "type": "unknown",
+    "abstract": "While intuitive for humans, the concept of visual complexity is hard to\ndefine and quantify formally. We suggest adopting the multi-scale structural\ncomplexity (MSSC) measure, an approach that defines structural complexity of an\nobject as the amount of dissimilarities between distinct scales in its\nhierarchical organization. In this work, we apply MSSC to the case of visual\nstimuli, using an open dataset of images with subjective complexity scores\nobtained from human participants (SAVOIAS). We d",
+    "tags": [
+      "TIC_v2.1_update"
+    ],
+    "enriched_at": "2025-10-03T21:06:27"
+  },
+  {
+    "id": "pending_caa04910",
+    "url": "https://www.frontiersin.org/journals/human-neuroscience/articles/10.3389/neuro.09.002.2010/full",
+    "doi": null,
+    "source": "TIC_local",
+    "validation_status": "pending",
+    "authors": [],
+    "year": null,
+    "title": "[Pending extraction]",
+    "journal": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "pmid": null,
+    "type": "unknown",
+    "abstract": null,
+    "tags": [
+      "TIC_v2.1_update"
+    ]
+  },
+  {
+    "id": "unknown1987facts",
+    "url": null,
+    "doi": "10.1007/BF01044839",
+    "source": "TIC_local",
+    "validation_status": "complete",
+    "authors": [],
+    "year": 1987,
+    "title": "Some facts about \"weapon focus.\"",
+    "journal": "Law and Human Behavior",
+    "volume": "11",
+    "issue": "1",
+    "pages": "55-62",
+    "pmid": null,
+    "type": "unknown",
+    "abstract": null,
+    "tags": [
+      "TIC_v2.1_update"
+    ],
+    "publisher": "American Psychological Association (APA)",
+    "enriched_at": "2025-10-03T21:06:28"
+  },
+  {
+    "id": "pending_840fb064",
+    "url": null,
+    "doi": "10.1007/BF01044678",
+    "source": "TIC_local",
+    "validation_status": "pending",
+    "authors": [],
+    "year": null,
+    "title": "[Pending extraction]",
+    "journal": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "pmid": null,
+    "type": "unknown",
+    "abstract": null,
+    "tags": [
+      "TIC_v2.1_update"
+    ]
+  },
+  {
+    "id": "pending_21d03127",
+    "url": "https://www.sciencedirect.com/science/article/pii/S0149763425003835",
+    "doi": null,
+    "source": "TIC_local",
+    "validation_status": "pending",
+    "authors": [],
+    "year": null,
+    "title": "[Pending extraction]",
+    "journal": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "pmid": null,
+    "type": "unknown",
+    "abstract": null,
+    "tags": [
+      "TIC_v2.1_update"
+    ]
+  }
+]

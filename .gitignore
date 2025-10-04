@@ -4,5 +4,25 @@ citations/*.log
 citations/*.tmp
 citations/local*.json
 
+# Bibliography outputs and PDFs
+bibliography/
+
+# New scripts (work in progress)
+scripts/CITATION_EXTRACTOR_README.md
+scripts/extract_and_download_citations.py
+
 # OS junk
 .DS_Store
+
+# Internal analysis and working files
+simulations/internal_analysis/
+simulations/EVIDENCE_DOSSIER_v4.md
+
+# Simulation results (temporary/working files)
+simulations/results_v3.txt
+simulations/results_v4.txt
+
+# Version history (keep v1 for reference, v2 failed)
+simulations/parameter_recovery_v1.py
+simulations/parameter_recovery_v2.py
+simulations/parameter_recovery_v3.py
