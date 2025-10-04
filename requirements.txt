@@ -1,7 +1,14 @@
 # Core dependencies for TIC parameter recovery simulations
 numpy>=1.24
-# Optax is used by the GPU-accelerated optimization routines
+
+# Optimization libraries
 optax>=0.1.7
-# Install JAX; choose the jaxlib wheel matching your platform (CPU/GPU)
+
+# JAX for GPU-accelerated simulations (v4)
+# Choose the jaxlib wheel matching your platform (CPU/GPU)
 jax>=0.4.20
 jaxlib>=0.4.20
+
+# Hierarchical Bayesian modeling (v6)
+pymc>=5.0
+arviz>=0.22
