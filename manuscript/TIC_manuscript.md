@@ -6,7 +6,7 @@
 
 ## Abstract
 
-Subjective temporal experience during ongoing events shows marked malleability, with time seeming to "fly" during complex, engaging activities and "drag" during monotony. We present The Information Clock (TIC), a quantitative framework proposing that prospective duration judgments emerge from competing compression and dilation processes. The relationship is formalized as T_s ≈ T_o · [1 + κ·N'^γ] / [λ(D')^α · Φ'^β], where T_s is subjective duration, T_o is objective duration, D' is normalized information density (compression factor), N' is normalized novelty (dilation factor), and Φ' represents the system's integrative capacity. Sustained high-density information compresses subjective time while transient novelty dilates it, with the final experience determined by their relative strengths. We outline a pre-registered RSVP experiment that varies entropy (1.0–7.0 bits/frame), pairs it with EEG-derived Lempel–Ziv complexity as a Φ' proxy, and includes a subset validation using a TMS-evoked perturbational complexity index. The model makes specific, falsifiable predictions about the quantitative relationship between information metrics and temporal experience. While this paper focuses on prospective timing, we discuss how the framework must be extended to accommodate the well-documented prospective-retrospective dissociation where information load shows opposite effects on memory-based duration judgments.
+Subjective temporal experience during ongoing events shows marked malleability, with time seeming to "fly" during complex, engaging activities and "drag" during monotony. We present The Information Clock (TIC), a quantitative framework proposing that prospective duration judgments emerge from competing compression and dilation processes. In the primary formulation used for confirmatory tests, the relationship is: T_s ≈ T_o · [1 + κ·N'^γ] / [λ · D' · Φ'], where T_s is subjective duration, T_o is objective duration, D' is normalized information density (compression factor), N' is normalized novelty (dilation factor), and Φ' represents the system's integrative capacity. Sustained high-density information compresses subjective time while transient novelty dilates it, with the final experience determined by their relative strengths. We outline a pre-registered RSVP experiment that varies entropy (1.0–7.0 bits/frame), pairs it with EEG-derived Lempel–Ziv complexity as a Φ' proxy, and includes a subset validation using a TMS-evoked perturbational complexity index. The model makes specific, falsifiable predictions about the quantitative relationship between information metrics and temporal experience. While this paper focuses on prospective timing, we discuss how the framework must be extended to accommodate the well-documented prospective-retrospective dissociation where information load shows opposite effects on memory-based duration judgments.
 
 **Keywords:** Time perception, Information theory, Prospective timing, Subjective experience, Consciousness, Integrated information, EEG, Phase-amplitude coupling, Lempel-Ziv complexity
 
@@ -83,8 +83,8 @@ This equation implements a dual-process model where compression and dilation mec
    - Effect: Increasing N' increases the numerator, increasing T_s/T_o
 
 3. **Competing Effects:**
-   - When κ·N'^γ > λ(D')^α · Φ'^β: time dilates (T_s > T_o)
-   - When κ·N'^γ < λ(D')^α · Φ'^β: time compresses (T_s < T_o)
+   - When κ·N'^γ > λ · D' · Φ': time dilates (T_s > T_o)
+   - When κ·N'^γ < λ · D' · Φ': time compresses (T_s < T_o)
    - High D' with high N': effects compete, final T_s depends on relative parameter values
 
 This formulation maintains dimensional consistency and predicts both compression (via D' and Φ') and dilation (via N'), resolving a prior inconsistency in which all variables pushed in the same direction.
@@ -326,24 +326,24 @@ Following precedents dissociating stimulus complexity from expectancy violations
 
 ### Parameter Estimation Strategy
 
-To mitigate identifiability concerns with 5 free parameters {λ, κ, α, β, γ}, we employ a validated hierarchical Bayesian estimation strategy following precedents from complex timing models (Maaß et al., 2021; Jazayeri & Shadlen, 2010; Luzardo et al., 2013).
+For the exploratory extension with 5 free parameters {λ, κ, α, β, γ} (Appendix B), we employ a validated hierarchical Bayesian estimation strategy following precedents from complex timing models (Maaß et al., 2021; Jazayeri & Shadlen, 2010; Luzardo et al., 2013).
 
 **Hierarchical Bayesian Framework:**
 Following Maaß et al. (2021), we implement information sharing across participants through "shrinkage," achieving 40-60% reduction in parameter estimate variability compared to single-level maximum likelihood. Matzke & Wagenmakers (2009) demonstrated hierarchical Bayesian estimation achieves mean absolute error of 0.05-0.15 in parameter recovery while classical maximum likelihood shows 0.15-0.35 error (2-3× worse).
 
 **Three-Phase Sequential Estimation:**
 
-**Phase 1 - Compression Parameters (N' ≈ 0 trials only):**
-Estimate {λ, α, β} from the reduced model: T_s ≈ T_o / [λ(D')^α · Φ'^β]
+**Phase 1 - Compression Parameters (N' ≈ 0 trials only; exploratory extension):**
+For the exploratory extended model (Appendix B), estimate {λ, α, β} from the reduced form: T_s ≈ T_o / [λ · (D')^α · (Φ')^β]
 
 Priors:
 - λ ~ Gamma(2, 0.5)  # Regularizes toward λ ≈ 1
 - α ~ Normal(1, 0.5) truncated to [0.3, 2.0]
 - β ~ Normal(0.5, 0.3) truncated to [0.2, 1.5]
 
-**Phase 2 - Dilation Parameters (D' constant, varying N'):**
-Fix {λ̂, α̂, β̂} at Phase 1 posterior means. Estimate {κ, γ} from:
-T_s ≈ T_o(1 + κ·N'^γ) / [λ̂·D'^α̂ · Φ'^β̂]
+**Phase 2 - Dilation Parameters (D' constant, varying N'; exploratory extension):**
+Fix {λ̂, α̂, β̂} at Phase 1 posterior means. Estimate {κ, γ} from the extended model:
+T_s ≈ T_o(1 + κ·N'^γ) / [λ̂ · (D')^α̂ · (Φ')^β̂]
 
 Priors:
 - κ ~ Gamma(2, 2)  # Regularizes toward κ ≈ 0.5
@@ -369,11 +369,11 @@ Following validated timing model precedents: 80-180 trials minimum for 4-6 param
 
 **H1 (Sustained Density → Compression)** [CONFIRMATORY]: Holding novelty constant (N' ≈ 0), increasing sustained information density (D') will lead to time compression (T_s < T_o) under the simplified model.
 
-**Mechanism**: Higher D' increases the denominator λ(D')^α · Φ'^β, decreasing T_s/T_o.
+**Mechanism**: Higher D' increases the denominator λ · D' · Φ', decreasing T_s/T_o.
 
 **Operational prediction**: Duration reproduction for high-density RSVP sequences (Block A: 7.0 bits/frame) will show significant underestimation relative to low-density sequences (1.0 bits/frame). We expect a medium effect (d ≈ 0.5–0.6), consistent with 15+ years of evidence from independent laboratories (Tse et al., 2004; Pariyadath & Eagleman, 2007, 2012; Matthews & Meck, 2016).
 
-**Confirmatory Status**: Parameter recovery simulation (Appendix A) demonstrates good identifiability for density parameters (α: r = 0.799, λ: r = 0.796), supporting confirmatory testing of TIC's novel information-compression mechanism.
+**Confirmatory Status**: Appendix A (extended model) demonstrates good identifiability for density-related parameters (α: r = 0.799, λ: r = 0.796). In the primary simplified model (α = 1), compression is tested via the λ parameter and sign-consistent D' effects.
 
 *Precedent*: Visual complexity and cognitive load show inverse correlation with perceived duration in prospective timing tasks (van Wassenhove, 2009). Temporal oddball literature demonstrates Duration Distortion Factors of 1.05-1.15 (5-15% expansion) with Cohen's d = 0.5-0.6 representing well-established conservative estimates across multiple paradigms.
 
@@ -389,22 +389,22 @@ Following validated timing model precedents: 80-180 trials minimum for 4-6 param
 
 **H3 (Integrative Capacity → Compression)** [CONFIRMATORY]: Higher Φ' (greater integrative capacity) will lead to more efficient information processing and thus stronger time compression in the simplified model.
 
-**Mechanism**: Higher Φ' increases the denominator λ(D')^α · Φ'^β, decreasing T_s/T_o regardless of D' or N' values.
+**Mechanism**: Higher Φ' increases the denominator λ · D' · Φ', decreasing T_s/T_o regardless of D' or N' values.
 
 **Operational prediction**:
 - Higher PCI/LZc (proxies for Φ') will correlate with duration underestimation
 - Conditions that reduce Φ' (sleep deprivation, low arousal) will reduce compression
-- Neural proxies (LZc) will show significant β coefficient when included in Equation 1
+- Neural proxies (LZc) will show a negative association with T_s when entered with Φ' in the simplified model; in the extended model, the β exponent can be estimated directly (Appendix B).
 
-**Confirmatory Status**: Parameter recovery demonstrates good identifiability for Φ' modulation parameter (β: r = 0.794), supporting confirmatory testing of integrative capacity effects on temporal compression.
+**Confirmatory Status**: Appendix A (extended model) demonstrates good identifiability for a Φ' modulation exponent (β: r = 0.794). In the primary simplified model (β = 1), Φ' enters linearly and its effect is assessed via the Φ' term within the denominator.
 
 *Precedent*: PCI correlates with temporal discrimination accuracy across consciousness states, with reduced Φ' predicting timing deficits in disorders.
 
 **H4 (Competition Hypothesis)** [EXPLORATORY]: When both D' and N' are high, subjective duration will depend on the relative strength of compression (from D' and Φ') versus dilation (from N'), governed by {λ, κ, γ}.
 
 **Mechanism**: The equation predicts a tug-of-war where:
-- If κ·N'^γ > λ(D')^α · Φ'^β → dilation dominates (T_s > T_o)
-- If κ·N'^γ < λ(D')^α · Φ'^β → compression dominates (T_s < T_o)
+- If κ·N'^γ > λ · D' · Φ' → dilation dominates (T_s > T_o)
+- If κ·N'^γ < λ · D' · Φ' → compression dominates (T_s < T_o)
 
 **Operational prediction**: Factorial design varying D' and N' independently should reveal:
 - Main effect of D' → compression
@@ -429,7 +429,7 @@ TIC would be falsified if:
 
 2. **Mathematical form fails**: The dual-process equation (Equation 1 — Simplified) fails to fit data better than simpler alternatives (e.g., D'-only model, N'-only model, additive linear model)
 
-3. **Parameter estimation fails**: Estimated parameters λ, κ, γ (primary) are not significantly different from zero, have wrong signs, or are unrecoverable in parameter recovery simulations; similarly for α, β in exploratory fits
+3. **Parameter estimation fails**: Estimated parameters λ, κ, γ (primary) are not significantly different from zero, have wrong signs, or are unrecoverable; similarly for α, β in exploratory fits
 
 4. **Neural proxies fail**: PAC and LZc show no systematic relationship with Φ' or opposite relationships with T_s than predicted
 
@@ -525,14 +525,14 @@ These state effects likely exist but are not captured in the current model. Inco
 Beyond extending to retrospective timing, future research should:
 
 1. Test TIC across sensory modalities, including auditory and tactile timing where integration windows differ (Keetels & Vroomen, 2012; Noel et al., 2015)
-2. Examine individual differences in parameters λ, α, β and their stability as trait markers
+2. Examine individual differences in parameters λ, κ, γ (primary) and, in exploratory fits, α, β, and their stability as trait markers
 3. Investigate pharmacological manipulations affecting Φ', including psychedelics which alter time perception without reducing integrated information (Ort et al., 2023; Wittmann et al., 2007; Farnes et al., 2020)
 4. Develop real-time Φ' estimation for brain-computer interfaces using validated EEG proxies (Sitt et al., 2014)
 5. Explore connections to flow states and altered consciousness, particularly interventions showing timing modulation: meditation training (Berkovich-Ohana et al., 2012; Bodart et al., 2018), sensory deprivation (Glicksohn et al., 2017), and transcranial stimulation protocols (Wiener et al., 2010; Rocha et al., 2018; Nejati et al., 2024)
 
 ## 7. Conclusion
 
-The Information Clock (TIC) offers a quantitative framework linking information processing to prospective temporal experience through a dual-process architecture. By proposing that subjective duration emerges from competing compression and dilation mechanisms—formalized as T_s ≈ T_o · [1 + κ·N'^γ] / [λ(D')^α · Φ'^β]—TIC makes specific, testable predictions about how we experience time's passage. The model predicts that sustained information density compresses time while transient novelty dilates it, with integrative capacity modulating both effects. While acknowledging the need for extension to retrospective timing, this framework provides a foundation for understanding one of consciousness's most fundamental features: the subjective flow of time.
+The Information Clock (TIC) offers a quantitative framework linking information processing to prospective temporal experience through a dual-process architecture. By proposing that subjective duration emerges from competing compression and dilation mechanisms—formalized in the primary model as T_s ≈ T_o · [1 + κ·N'^γ] / [λ · D' · Φ']—TIC makes specific, testable predictions about how we experience time's passage. The model predicts that sustained information density compresses time while transient novelty dilates it, with integrative capacity modulating both effects. While acknowledging the need for extension to retrospective timing, this framework provides a foundation for understanding one of consciousness's most fundamental features: the subjective flow of time.
 
 Beyond time perception, TIC may help clarify how temporal experience could appear—or fail to appear—in artificial systems. By providing a falsifiable, quantitative account of subjective duration, TIC offers a baseline against which future machine "temporal signatures" might be assessed. If an artificial agent ever exhibits a consistent, emergent mismatch between objective and subjective time under controlled manipulations of information density and novelty, we would at least have a ruler to hold up. The broader question is simple: if consciousness comes with a way of "waiting," what would time feel like for a system that processes information differently than we do?
 
@@ -692,7 +692,7 @@ Vignaud, P., et al. (2025). Examining the impact of physiological stress on time
 
 ### A.1 Objectives
 
-Confirm that parameters λ, κ, α, β, γ in Equation 1 can be reliably recovered from data given the proposed experimental design and realistic noise levels.
+Confirm that parameters λ, κ, α, β, γ in the extended exploratory model (Appendix B) can be reliably recovered from data given the proposed experimental design and realistic noise levels.
 
 ### A.2 Methods
 
@@ -715,8 +715,8 @@ Confirm that parameters λ, κ, α, β, γ in Equation 1 can be reliably recover
 - Measurement error: σ_measurement = 2% of T_s (motor response variability)
 
 **Recovery Procedure**:
-- Generate 1000 synthetic datasets with equation: T_s = T_o · [1 + κ·N'^γ] / [λ(D')^α · Φ'^β] + noise
-- Fit Equation 1 using Bayesian non-linear mixed-effects models (Stan/brms)
+- Generate 1000 synthetic datasets with the extended equation: T_s = T_o · [1 + κ·N'^γ] / [λ · (D')^α · (Φ')^β] + noise
+- Fit the extended exploratory model from Appendix B using Bayesian non-linear mixed-effects models (Stan/brms)
 - Priors: λ, κ ~ LogNormal(0, 1); α, β, γ ~ Normal(1, 0.5) truncated to (0, ∞)
 - Compare recovered posterior means to true parameters
 
