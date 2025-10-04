@@ -1,10 +1,17 @@
 #!/usr/bin/env python3
 """
 Parameter Recovery Simulation for TIC Model (Minimal Dependencies Version)
-T_s ≈ T_o · [1 + κ·N'^γ] / [λ(D')^α · Φ'^β]
 
-Uses only NumPy - no pandas, scipy, matplotlib required
-Implements simple but effective differential evolution optimizer
+Models:
+- Primary (manuscript Eq. 1 — Simplified): T_s ≈ T_o · [1 + κ·N'^γ] / [λ · D' · Φ']
+- Exploratory (Appendix B): T_s ≈ T_o · [1 + κ·N'^γ] / [λ · (D')^α · (Φ')^β]
+
+This script simulates parameter recovery for the exploratory 5-parameter model
+and uses a three-phase sequential estimation strategy to improve identifiability:
+1) estimate compression parameters from low-novelty trials, 2) estimate novelty
+parameters at fixed density, and 3) jointly refine all parameters.
+
+Uses only NumPy; implements a simple differential evolution optimizer.
 
 Author: TIC Research
 Date: 2025-10-02
@@ -417,9 +424,11 @@ def main():
     print("=" * 80)
     print()
 
+    n_sim = int(os.getenv('N_SIM', '1000'))
+    n_participants = int(os.getenv('N_PARTICIPANTS', '35'))
     simulator = TICParameterRecovery(
-        n_simulations=1000,
-        n_participants=35,
+        n_simulations=n_sim,
+        n_participants=n_participants,
         n_trials=56
     )
 

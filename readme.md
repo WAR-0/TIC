@@ -9,22 +9,24 @@ Time perception compresses under sustained information load while dilating under
 ## Core Model
 
 ```
-T_s ≈ T_o · [1 + κ·N'^γ] / [λ(D')^α · Φ'^β]
+T_s ≈ T_o · [1 + κ·N'^γ] / [λ · D' · Φ']
 ```
 
 Where:
 - `T_s/T_o` = subjective/objective duration ratio
 - `D'` = normalized information density (compression factor, denominator)
-- `N'` = normalized novelty (dilation factor, numerator)  
+- `N'` = normalized novelty (dilation factor, numerator)
 - `Φ'` = individual integrative capacity (trait-level processing efficiency)
-- `λ, κ, α, β, γ` = empirically determined parameters
+- `λ, κ, γ` = empirically determined parameters (primary model; α=β=1)
+
+Exploratory extension (Appendix B): allow exponents on D' and Φ' (α, β) to vary.
 
 ## Key Findings
 
 Parameter recovery validation (N=35, 1960 observations):
-- **Compression parameters** (novel contribution): r > 0.79, supporting the information-density mechanism
-- **Dilation parameters** (known effects): r ≈ 0.50, consistent with established oddball phenomena
-- Mean recovery: r = 0.677 across all parameters
+- **Compression parameters (primary)**: r ≈ 0.80 (good), supporting identifiability under the simplified 3-parameter model {λ, κ, γ} with α=β=1
+- **Dilation parameters (exploratory)**: r ≈ 0.50 (moderate), suitable for exploratory analysis and future designs with more novelty levels
+- Mean recovery: r ≈ 0.68 across all parameters
 
 The asymmetric recovery supports TIC's core innovation—the compression mechanism—while acknowledging that transient novelty effects require expanded experimental trials.
 
@@ -100,7 +102,7 @@ TIC builds on established findings:
 - Addresses prospective timing only (experience during events)
 - Retrospective timing (memory of duration) shows opposite patterns
 - Novelty parameters require expanded trials for precise estimation
-- Individual Φ' treated as trait, not state
+- Φ' is modeled as a stable trait by design, deliberately excluding state-dependent fluctuations in this foundational version
 
 ## License
 

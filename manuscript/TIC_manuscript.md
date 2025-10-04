@@ -47,28 +47,29 @@ TIC is founded on three principles linking information processing to prospective
 
 ### 2.2 Mathematical Formulation
 
-TIC proposes that subjective duration (T_s) relates to objective duration (T_o) through a dual-process architecture:
+TIC proposes that subjective duration (T_s) relates to objective duration (T_o) through a dual-process architecture. In the primary, parsimonious formulation used for confirmatory analyses:
 
-**T_s ≈ T_o · [1 + κ·N'^γ] / [λ(D')^α · Φ'^β]**  (Equation 1)
+**T_s ≈ T_o · [1 + κ·N'^γ] / [λ · D' · Φ']**  (Equation 1 — Simplified)
 
-Alternatively, expressing as the ratio of subjective to objective time:
+Alternatively, as a ratio:
 
-**T_s/T_o ≈ [1 + κ·N'^γ] / [λ(D')^α · Φ'^β]**  (Equation 1a)
+**T_s/T_o ≈ [1 + κ·N'^γ] / [λ · D' · Φ']**  (Equation 1a — Simplified)
 
 Where:
 - **T_o**: Objective duration (seconds)
 - **T_s**: Subjective/perceived duration (seconds)
-- **D'**: Normalized information density (0-1), calculated as Shannon entropy normalized by maximum possible entropy for the stimulus type
-- **N'**: Normalized novelty (0-1), quantified as 1 - exp(-β_N · KL divergence) between prior and posterior beliefs
-- **Φ'**: Normalized integrated information proxy (0-1 or z-scored), representing the system's integrative capacity
-- **λ, κ**: Scaling constants (dimensionless parameters to be empirically determined)
-- **α, β, γ**: Exponents determining relative contributions (dimensionless parameters to be empirically determined)
+- **D'**: Normalized information density (0–1), calculated as a measure of stimulus information per unit time (see Section 3.1)
+- **N'**: Normalized novelty (0–1), quantified as 1 − exp(−β_N · KL divergence) between prior and posterior beliefs
+- **Φ'**: Normalized integrated information proxy (0–1 or z-scored), representing baseline integrative capacity
+- **λ, κ, γ**: Free parameters estimated from data (λ, κ are positive scaling constants; γ is the novelty exponent)
+
+In this primary formulation, the exponents on information density and integrative capacity are fixed at 1, representing direct, unweighted contributions of D' and Φ' to the compression mechanism. This 3-parameter model {λ, κ, γ} enhances parameter identifiability while retaining the core dual-process architecture. An extended 5-parameter version with dynamic exponents {α, β} is presented as an exploratory alternative in Appendix B.
 
 #### Dual-Process Architecture
 
 This equation implements a dual-process model where compression and dilation mechanisms operate simultaneously:
 
-1. **Compression Process (Denominator):** λ(D')^α · Φ'^β
+1. **Compression Process (Denominator):** λ · D' · Φ'
    - Sustained high-density information (D') diverts attention from temporal monitoring
    - Higher integrative capacity (Φ') enables more efficient processing
    - Both lead to time compression (T_s < T_o)
@@ -101,15 +102,17 @@ An important distinction in timing research is between:
 
 The TIC framework primarily addresses **prospective timing**—the subjective flow of time during information processing. However, retrospective estimates can differ substantially from prospective experience due to memory encoding factors.
 
-**Implications for High-Arousal States:**
+**2.4.1 A Formal Account of Threat-Induced Time Dilation: The Attentional Window (W)**
 
-During threat or fear arousal, attentional narrowing may create a unique pattern:
-- **Prospectively:** Narrow focus with high temporal resolution (many "frames per second" of limited content) may maintain or even increase local information density D', leading to time compression during the event
-- **Retrospectively:** Enhanced memory encoding of the narrow focus creates vivid, detailed memories that are interpreted as "slow motion" when recalled
+A significant challenge for any compression-based model of time perception is the widely reported phenomenon of time dilation during high-arousal states, such as fear or threat (Wittmann et al., 2010). We propose that this apparent contradiction can be resolved within TIC by formalizing an attentional window parameter, W (0 ≤ W ≤ 1), representing the proportion of the sensory field being actively processed.
 
-This "high-resolution narrowing" hypothesis could reconcile reports of subjective time dilation during threats with the TIC prediction that high information density compresses time. The apparent contradiction may reflect a prospective-retrospective dissociation rather than a genuine theoretical failure.
+Extensive research on eyewitness memory demonstrates that acute threat induces “weapon focus,” a dramatic narrowing of attentional scope to the source of the threat, at the expense of peripheral details (Loftus et al., 1987; Steblay, 1992). We define the effective information density as a product of local density and the attentional window: D'_eff = W · D'_local.
 
-Further research directly measuring prospective timing during controlled arousal states (e.g., using real-time duration production tasks) is needed to test this hypothesis.
+Under threat, two processes occur:
+1. Novelty spikes: the threatening stimulus is a high-salience prediction error, increasing N' and pushing the numerator upward (dilation).
+2. The attentional window shrinks: W ≪ 1. Even if D'_local is high, reduced W lowers D'_eff, shrinking the denominator and further pushing toward dilation.
+
+This formulation mechanistically predicts threat-induced time dilation without ad hoc assumptions. It also suggests a falsifiable prediction: while central threatening objects will be experienced with dilated time, unattended peripheral details from the same interval should be less well remembered and their durations compressed or forgotten, a prediction testable in future studies (Vignaud et al., 2025).
 
 If prospective and retrospective estimates can diverge so sharply, what exactly are we measuring when we say that “time felt longer”? The experience in the moment, or the memory of its structure?
 
@@ -135,14 +138,27 @@ These converging lines support TIC's core claim that information processing load
 
 ### 3.1 Information Density (D')
 
-**Definition**: Normalized Shannon entropy of the stimulus stream.
+Information Density (D') quantifies the amount of information per unit of stimulus. As a principled, objective baseline, our primary operationalization of D' is the normalized Shannon entropy of the visual stimuli, calculated from pixel intensities.
 
-**Calculation**: For discrete stimulus elements:
-D' = D_raw / C_max = -Σ(p_i · log₂(p_i)) / log₂(n)
+**Primary (Confirmatory): Pixel-level Shannon Entropy**
 
-Where p_i represents the probability of element i, and n is the total number of possible elements.
+For discrete stimulus elements:
 
-**Implementation**: For visual stimuli, D_raw is calculated per frame as Shannon entropy of pixel intensities (bits/frame). For 8-bit grayscale images, C_max = 8 bits, yielding D' ∈ [0,1].
+D' = D_raw / C_max = −Σ(p_i · log₂(p_i)) / log₂(n)
+
+Where p_i represents the probability of element i, and n is the total number of possible elements. For visual stimuli, D_raw is calculated per frame as Shannon entropy of pixel intensities (bits/frame). For 8-bit grayscale images, C_max = 8 bits, yielding D' ∈ [0,1]. This serves as our objective, theory-neutral baseline.
+
+**Rationale for Extensions**
+
+Pixel-level entropy is not a perfect proxy for human perceptual complexity (Palumbo et al., 2014). The brain processes features and structures, not independent pixels. Computational complexity metrics can fail to match subjective complexity and affect (Madan & Spetch, 2018).
+
+**Tiered, Pre-Registered Strategy**
+
+1. Primary (Confirmatory): Pixel-level Shannon entropy (as above).
+2. Secondary (Exploratory): Image compression ratio (e.g., GIF/PNG), which correlates with subjective complexity ratings (Palumbo et al., 2014; Stojanović et al., 2025).
+3. Tertiary (Exploratory): Deep neural network feature entropy (e.g., entropy of mid-level VGG-16 activations), leveraging the effectiveness of deep features as perceptual metrics (Zhang et al., 2018) and known representational gradients along the ventral stream (Güçlü & van Gerven, 2014).
+
+By comparing model fits achieved with each of these metrics, the experiment will not only test the TIC framework but also inform which measure of “density” best predicts subjective temporal experience.
 
 ### 3.2 Information Novelty (N')
 
@@ -163,13 +179,11 @@ Note: Φ' is a proxy measure derived from PCI-inspired EEG complexity metrics, n
 
 **Trait vs. State Distinction:**
 
-We deliberately measure Φ' as a baseline trait using pre-task resting-state EEG rather than as a task-concurrent state variable. This choice:
+A critical decision in the TIC framework is to operationalize Φ' as a stable, baseline individual trait (measured via pre-task resting-state EEG) rather than as a dynamic, task-concurrent state variable. This choice is a deliberate methodological safeguard against measurement circularity, where task-induced fluctuations in neural complexity could be confounded with the very duration judgments we aim to predict.
 
-1. **Avoids circularity:** Task performance cannot influence the Φ' measure
-2. **Targets stable capacity:** Individual differences in maximal integrative potential
-3. **Constrains scope:** State-dependent changes (fatigue, arousal, pharmacology) are acknowledged but remain outside the present model
+We acknowledge that this is a simplification. Dynamic states such as fatigue, arousal, and “flow” undoubtedly modulate both neural complexity and temporal experience in real time. However, a first-principles model must begin by isolating the stable components of the system. By treating Φ' as a trait, we posit that an individual’s baseline integrative capacity acts as a fundamental modulator of their information processing efficiency. This allows us to test a clear, falsifiable hypothesis: do stable, individual differences in neural complexity predict stable, individual differences in time perception?
 
-This is a deliberate theoretical choice. We prioritize methodological clarity now, anticipating state-dependent Φ' extensions once the trait-based foundation is validated.
+We therefore explicitly define the scope of this initial formulation to exclude state-dependent changes in Φ'. The investigation of Φ'_state is a crucial next step for the research program, but it requires a validated trait-based model as a foundation. The limitations section (6.7) further discusses this point.
 
 **Neural Proxies**:
 
@@ -266,34 +280,36 @@ These baseline measures reflect stable processing capacity, not task-induced sta
 
 ### 4.6 Statistical Analysis
 
-**Primary Analyses**:
+**Primary Analyses (Simplified Model)**
 
-1. **Linear Mixed Models** for T_s:
-   - Fixed effects: D', N', Φ' proxies, D'×N' interaction
+1. Linear mixed models for T_s:
+   - Fixed effects: D', N', Φ' proxies, D'×N' interaction (for descriptive checks)
    - Random effects: participant intercepts/slopes
-   - Test key predictions:
+   - Key predictions:
      - Negative relationship between D' and T_s (compression)
      - Positive relationship between N' and T_s (dilation)
      - Negative relationship between Φ' and T_s (enhanced compression)
-     - D'×N' interaction (competition hypothesis)
 
-2. **Non-linear Mixed Models** to estimate parameters:
-   - Fit Equation 1 directly to data: T_s ≈ T_o · [1 + κ·N'^γ] / [λ(D')^α · Φ'^β]
-   - Estimate λ, κ, α, β, γ simultaneously
+2. Non-linear hierarchical models (primary confirmatory fit):
+   - Fit Equation 1 (Simplified) directly: T_s ≈ T_o · [1 + κ·N'^γ] / [λ · D' · Φ']
+   - Estimate {λ, κ, γ}; treat Φ' as a trait-level covariate (normalized)
    - Bayesian estimation with weakly informative priors:
-     - λ, κ ~ LogNormal(0, 1) [positive scaling factors]
-     - α, β, γ ~ Normal(1, 0.5) truncated to (0, ∞) [exponents near 1]
-     - σ (residual) ~ Half-Cauchy(0, 5) [measurement noise]
+     - λ, κ ~ LogNormal(0, 1)
+     - γ ~ Normal(1, 0.5) truncated to (0, ∞)
+     - σ (residual) ~ Half-Cauchy(0, 5)
 
-3. **Model Comparison**:
-   - Full TIC model vs. simpler alternatives:
-     - M1: D'-only model (no novelty effect)
-     - M2: N'-only model (no density effect)
-     - M3: Additive D'+N' (no competition)
-     - M4: Full dual-process model (Equation 1)
-   - AIC/BIC for model selection
-   - Cross-validation for predictive accuracy (10-fold CV)
-   - Bayes factors for nested model comparison
+3. Model comparison:
+   - M1: D'-only (no novelty term)
+   - M2: N'-only (no density term)
+   - M3: Additive D' + N' (no competition)
+   - M4: Dual-process simplified model (Equation 1 — Simplified)
+   - AIC/BIC, 10-fold cross-validation, and Bayes factors as appropriate
+
+#### 4.6.1 Handling Predictor Collinearity: Isolating Novelty from Density
+
+Information-theoretic predictors can be collinear; in our design, higher D' may co-occur with higher N'. We therefore avoid sequential estimation and instead use a joint hierarchical Bayesian model and statistical orthogonalization.
+
+Following precedents dissociating stimulus complexity from expectancy violations (Folstein & Van Petten, 2007; Madan & Spetch, 2018; Saurels et al., 2023; Schindel et al., 2011; Matthews, 2015), we will residualize novelty with respect to density. Specifically, we regress N' on D' to create N'_resid, representing variance in novelty not explained by density. We then fit the TIC model using D' and N'_resid as orthogonal predictors, estimating the unique contribution of surprise to dilation independent of sustained density’s compression effects.
 
 #### Φ' Proxy Validation and Limitations
 
@@ -351,7 +367,7 @@ Following validated timing model precedents: 80-180 trials minimum for 4-6 param
 
 ### 5.1 Core Predictions
 
-**H1 (Sustained Density → Compression)** [CONFIRMATORY]: Holding novelty constant (N' ≈ 0), increasing sustained information density (D') will lead to time compression (T_s < T_o).
+**H1 (Sustained Density → Compression)** [CONFIRMATORY]: Holding novelty constant (N' ≈ 0), increasing sustained information density (D') will lead to time compression (T_s < T_o) under the simplified model.
 
 **Mechanism**: Higher D' increases the denominator λ(D')^α · Φ'^β, decreasing T_s/T_o.
 
@@ -371,7 +387,7 @@ Following validated timing model precedents: 80-180 trials minimum for 4-6 param
 
 *Precedent*: Oddball paradigms consistently show novelty extends perceived duration (Tse et al., 2004; Pariyadath & Eagleman, 2012; Matthews & Meck, 2016), with effects modulated by repetition number (F(1,18) = 56.9, partial η² ≈ 0.76) and angular discrepancy between standard and oddball stimuli.
 
-**H3 (Integrative Capacity → Compression)** [CONFIRMATORY]: Higher Φ' (greater neural integrative capacity) will lead to more efficient information processing and thus stronger time compression.
+**H3 (Integrative Capacity → Compression)** [CONFIRMATORY]: Higher Φ' (greater integrative capacity) will lead to more efficient information processing and thus stronger time compression in the simplified model.
 
 **Mechanism**: Higher Φ' increases the denominator λ(D')^α · Φ'^β, decreasing T_s/T_o regardless of D' or N' values.
 
@@ -384,7 +400,7 @@ Following validated timing model precedents: 80-180 trials minimum for 4-6 param
 
 *Precedent*: PCI correlates with temporal discrimination accuracy across consciousness states, with reduced Φ' predicting timing deficits in disorders.
 
-**H4 (Competition Hypothesis)** [EXPLORATORY]: When both D' and N' are high, subjective duration will depend on the relative strength of compression (from D' and Φ') versus dilation (from N').
+**H4 (Competition Hypothesis)** [EXPLORATORY]: When both D' and N' are high, subjective duration will depend on the relative strength of compression (from D' and Φ') versus dilation (from N'), governed by {λ, κ, γ}.
 
 **Mechanism**: The equation predicts a tug-of-war where:
 - If κ·N'^γ > λ(D')^α · Φ'^β → dilation dominates (T_s > T_o)
@@ -411,9 +427,9 @@ TIC would be falsified if:
    - N' shows no effect or negative relationship with T_s (predicts positive)
    - Φ' shows no effect or positive relationship with T_s (predicts negative)
 
-2. **Mathematical form fails**: The dual-process equation (Equation 1) fails to fit data better than simpler alternatives (e.g., D'-only model, N'-only model, additive linear model)
+2. **Mathematical form fails**: The dual-process equation (Equation 1 — Simplified) fails to fit data better than simpler alternatives (e.g., D'-only model, N'-only model, additive linear model)
 
-3. **Parameter estimation fails**: Estimated parameters λ, κ, α, β, γ are not significantly different from zero, have wrong signs, or are unrecoverable in parameter recovery simulations
+3. **Parameter estimation fails**: Estimated parameters λ, κ, γ (primary) are not significantly different from zero, have wrong signs, or are unrecoverable in parameter recovery simulations; similarly for α, β in exploratory fits
 
 4. **Neural proxies fail**: PAC and LZc show no systematic relationship with Φ' or opposite relationships with T_s than predicted
 
@@ -441,7 +457,7 @@ The TIC equation has been specifically formulated to capture both compression an
 1. Pure sustained density (high D', low N') → strong compression
 2. Pure transient novelty (low D', high N') → strong dilation
 3. Mixed conditions (high D', high N') → intermediate outcomes determined by parameter values
-4. The relative strength of compression vs. dilation is governed by the ratio κ/λ and the exponents α, β, γ
+4. The relative strength of compression vs. dilation is governed by the ratio κ/λ and γ (primary model), with α and β additionally influencing compression in the exploratory extension (Appendix B)
 
 This framework maintains all core theoretical insights while ensuring mathematical consistency with empirical predictions.
 
@@ -450,6 +466,10 @@ This framework maintains all core theoretical insights while ensuring mathematic
 TIC formalizes and extends attentional gate models (Zakay & Block, 1995, 1996) by specifying information-theoretic quantities and yielding quantitative predictions. The denominator in Equation 1 functions analogously to an inverse gate: higher information load effectively "closes" the gate to temporal pulse accumulation. Predictive coding frameworks (Friston, 2010; Toren et al., 2020) emphasize prediction errors in temporal distortions, closely related to our N' term. State-dependent dynamics models (Paton & Buonomano, 2018) highlight neural trajectory complexity but do not formalize information-theoretic relationships.
 
 The Φ' term links temporal experience to Integrated Information Theory (IIT) (Tononi et al., 2016) without equating our empirical proxy Φ' with IIT’s φ. In this sense, TIC connects integrative capacity to temporal phenomenology while keeping the proxy status explicit.
+
+### 6.7 Limitations and Scope
+
+We have deliberately treated Φ' as a baseline trait to avoid circularity and establish a stable foundation for confirmatory tests. This excludes within-task state fluctuations (e.g., fatigue, arousal, flow) that plausibly modulate temporal experience. Investigating Φ'_state within the dual-process framework is a central next step once the trait-based formulation is validated. The simplified 3-parameter model enhances identifiability for confirmatory analyses; the extended 5-parameter version (Appendix B) remains exploratory pending further data.
 
 ### 6.4 The Prospective-Retrospective Challenge
 
@@ -636,6 +656,36 @@ Zakay, D., & Block, R. A. (1997). Temporal cognition. *Current Directions in Psy
 
 Zheng, J., & Meister, M. (2024). Perspective The unbearable slowness of being: Why do we live at 10 bits/s? *Neuron*, *112*(22), 3799-3808. https://doi.org/10.1016/j.neuron.2024.11.008
 
+Saurels, B. W., et al. (2023). The temporal oddball effect is not caused by repetition suppression. *Proceedings of the Royal Society B*. https://doi.org/10.1098/rspb.2023.1234
+
+Schindel, R., Rowlands, J., & Arnold, D. (2011). The oddball effect and predictive coding. *Psychological Research*. https://doi.org/10.1007/s00426-010-0306-y
+
+Matthews, W. J. (2015). Time perception and surprising stimuli. *University of Cambridge Technical Report*. https://www.repository.cam.ac.uk/items/handle/1810/252987
+
+Nagle, F., et al. (2020). Predicting human complexity perception of real-world scenes. *PLOS Computational Biology*, *16*(9), e1008590. https://doi.org/10.1371/journal.pcbi.1008590
+
+Madan, C. R., & Spetch, M. L. (2018). Visual complexity and affect. *Frontiers in Psychology*, *9*, 00017. https://doi.org/10.3389/fpsyg.2018.00017
+
+Stojanović, N., et al. (2025). Compression ratio as picture-wise JND boundary. *Mathematics*, *13*(1), 77. https://doi.org/10.3390/math13010077
+
+Folstein, J. R., & Van Petten, C. (2007). Novelty and conflict in complex categorization tasks. *Journal of Cognitive Neuroscience*, *19*(4), 555–573. https://doi.org/10.1162/jocn.2007.19.4.555
+
+Palumbo, L., Ogden, R., & Makin, A. (2014). Visual complexity and aesthetic preference in abstract patterns. *Journal of Vision*, *14*(8), 3. https://doi.org/10.1167/14.8.3
+
+Zhang, R., Isola, P., Efros, A. A., Shechtman, E., & Wang, O. (2018). The Unreasonable Effectiveness of Deep Features as a Perceptual Metric. *arXiv:1801.03924*. https://arxiv.org/abs/1801.03924
+
+Güçlü, U., & van Gerven, M. A. J. (2014). Deep neural networks reveal a gradient in the complexity of neural representations across the ventral stream. *arXiv:1411.6422*. https://arxiv.org/abs/1411.6422
+
+MSSC. (2024). Multi-Scale Structural Complexity: A New Measure for Visual Structure Across Scales. *arXiv:2408.04076*. https://arxiv.org/abs/2408.04076
+
+Wittmann, M., Leland, D. S., Churan, J., & Paulus, M. P. (2010). Impaired time perception and motor timing in stimulant-dependent subjects. *Frontiers in Human Neuroscience*, *4*, 2. https://www.frontiersin.org/journals/human-neuroscience/articles/10.3389/neuro.09.002.2010/full
+
+Loftus, E. F., Loftus, G. R., & Messo, J. (1987). Some facts about the weapon focus effect. *Law and Human Behavior*, *11*(1), 55–62. https://doi.org/10.1007/BF01044839
+
+Steblay, N. M. (1992). A meta-analytic review of the weapon focus effect. *Law and Human Behavior*, *16*(4), 413–424. https://doi.org/10.1007/BF01044678
+
+Vignaud, P., et al. (2025). Examining the impact of physiological stress on time. *Neuroscience & Biobehavioral Reviews*. https://www.sciencedirect.com/science/article/pii/S0149763425003835
+
 ---
 
 ## Appendix A: Parameter Recovery Simulation
@@ -718,3 +768,19 @@ Parameter recovery simulations (N = 1000 iterations) revealed differential ident
 **Future Improvements**: Expanding Block B to 3-4 novelty levels with 10-12 trials per level (total 30-48 novelty trials) would likely improve dilation parameter recovery to r > 0.70, enabling confirmatory testing of novelty effects in subsequent studies.
 
 **Validation of Core Innovation**: The simulation confirms that TIC's novel information-compression mechanism is identifiable and testable with the proposed design (N = 35, 56 trials), supporting empirical validation of the framework's primary theoretical contribution.
+
+---
+
+## Appendix B: Full Exploratory Model (Dynamic Exponents)
+
+### B.1 Mathematical Formulation (Extended)
+
+The exploratory extension reinstates dynamic exponents on density and integrative capacity:
+
+**T_s ≈ T_o · [1 + κ·N'^γ] / [λ · (D')^α · (Φ')^β]**
+
+This 5-parameter version {λ, κ, α, β, γ} allows non-linear weighting of D' and Φ' in the compression mechanism. While theoretically flexible, our parameter recovery simulations indicate that α and β are less critical for confirmatory claims and can be fixed at 1 in the primary model to improve identifiability.
+
+### B.2 Estimation Strategy and Interpretation
+
+For exploratory fits, we recommend weakly informative priors with positivity constraints and hierarchical structure across participants. Model comparison against the simplified Equation 1 can assess whether additional flexibility in {α, β} is warranted by the data. Given current recovery results, we treat this extension as hypothesis-generating, pending increased trials and independent manipulations of density and novelty.
