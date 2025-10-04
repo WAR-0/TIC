@@ -74,6 +74,25 @@ TIC/
 - Time perception literature (15+ years oddball studies)
 - Bayesian brain theories (predictive processing)
 
+### Local Citations (optional)
+
+For quick, repo‑local citation management (outputs are git‑ignored):
+
+```
+# Add a DOI or URL, optionally tagging for batch import later
+python3 citations/manage_citations.py add --doi 10.1016/j.neuron.2024.11.008 --tag TIC_v2.1_update
+python3 citations/manage_citations.py add --url https://arxiv.org/abs/1801.03924 --tag TIC_v2.1_update
+
+# Enrich via Crossref/PubMed/arXiv and generate outputs
+python3 citations/manage_citations.py enrich --tag TIC_v2.1_update
+python3 citations/manage_citations.py generate
+
+# Outputs:
+#  - citations/output/references.bib
+#  - citations/output/references.ris
+#  - citations/output/apa_references.md
+```
+
 ## Status
 
 - [x] Mathematical formalization complete

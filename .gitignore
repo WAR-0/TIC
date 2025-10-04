@@ -1,0 +1,8 @@
+# Local citations outputs and temp files
+citations/output/
+citations/*.log
+citations/*.tmp
+citations/local*.json
+
+# OS junk
+.DS_Store
