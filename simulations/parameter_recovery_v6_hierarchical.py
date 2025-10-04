@@ -432,7 +432,13 @@ class TICParameterRecoveryV6:
         for param in ["D0", "lambda", "kappa", "gamma"]:
             true_vals = true_params[param]
             est_vals = estimated_params[f"{param}_i"]
-            corr = np.corrcoef(true_vals, est_vals)[0, 1]
+
+            # Guard against near-zero variance (common with boundary clipping)
+            if np.std(true_vals) < 1e-8 or np.std(est_vals) < 1e-8:
+                corr = np.nan
+            else:
+                corr = np.corrcoef(true_vals, est_vals)[0, 1]
+
             bias = float(np.mean(est_vals - true_vals))
             rmse = float(np.sqrt(np.mean((est_vals - true_vals) ** 2)))
             mae = float(np.mean(np.abs(est_vals - true_vals)))
@@ -442,9 +448,16 @@ class TICParameterRecoveryV6:
                 "rmse": rmse,
                 "mae": mae,
             }
+
         true_rho = true_params["kappa"] / true_params["lambda"]
         est_rho = estimated_params["kappa_i"] / estimated_params["lambda_i"]
-        corr_rho = np.corrcoef(true_rho, est_rho)[0, 1]
+
+        # Guard against near-zero variance for rho
+        if np.std(true_rho) < 1e-8 or np.std(est_rho) < 1e-8:
+            corr_rho = np.nan
+        else:
+            corr_rho = np.corrcoef(true_rho, est_rho)[0, 1]
+
         stats["rho"] = {
             "r": corr_rho,
             "bias": float(np.mean(est_rho - true_rho)),
