@@ -26,3 +26,7 @@ simulations/results_v4.txt
 simulations/parameter_recovery_v1.py
 simulations/parameter_recovery_v2.py
 simulations/parameter_recovery_v3.py
+
+# Python cache
+__pycache__/
+*.pyc
